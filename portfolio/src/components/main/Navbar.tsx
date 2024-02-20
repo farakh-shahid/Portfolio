@@ -10,24 +10,28 @@ const Navbar = () => {
       <div className='w-full h-full flex flex-row items-center justify-between m-auto px-[10px]'>
         <a
           href='#about-me'
-          className='h-auto w-auto flex flex-row items-center'
+          className='h-auto w-auto flex flex-row items-center '
         >
-          {/* <Image
-            src="/avatar1.jpg"
-            alt="logo"
-            width={70}
+         
+          <div className='ml-[33px]'>
+            <Image
+              className='mr-[10px] cursor-pointer hover:animate-slowspin w-10 h-10 p-1 rounded-full ring-2 ring-[#b49bff] dark:ring-purple-500'
+              src='/avatar1.jpg'
+              alt='Bordered avatar'
+              width={70}
             height={70}
-            className="cursor-pointer hover:animate-slowspin"
-          /> */}
+            />
+          </div>
 
-          <img
-            className='cursor-pointer hover:animate-slowspin w-10 h-10 p-1 rounded-full ring-2 ring-[#b49bff] dark:ring-purple-500'
-            src='/avatar1.jpg'
-            alt='Bordered avatar'
-          />
-
-          <span className='font-bold ml-[10px] hidden md:block text-gray-300'>
-            Farrukh
+          <span
+            className='font-bold ml-[10px] hidden md:block text-[#b49bff]'
+            style={{
+              fontSize: '1.7rem',
+              fontWeight: '800',
+              letterSpacing: '5px',
+            }}
+          >
+            <span className='text-[#b49bff]'>F</span>arrukh
           </span>
         </a>
 
