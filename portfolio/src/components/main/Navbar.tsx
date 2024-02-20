@@ -1,15 +1,11 @@
+import { navItems } from "@/src/constants/navItems";
 import { Socials } from "../../constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
-  const navItems = new Map([
-    ['about', { href: '#about-me', label: 'About me' }],
-    ['skills', { href: '#skills', label: 'Skills' }],
-    ['projects', { href: '#projects', label: 'Projects' }],
-    ['resume', { href: '/resume', label: 'Resume' }],
-  ]);
+ 
   return (
     <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-10">
       <div className="w-full h-full flex flex-row items-center justify-between m-auto px-[10px]">
