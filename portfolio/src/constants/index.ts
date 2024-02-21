@@ -239,8 +239,8 @@ export const Full_stack = [
 
 export const Other_skill = [
   {
-    skill_name: 'Go',
-    Image: '/go.png',
+    skill_name: 'NestJs',
+    Image: '/nest-js-icon.png',
     width: 60,
     height: 60,
   },

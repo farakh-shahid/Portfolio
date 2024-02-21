@@ -1,4 +1,5 @@
 import Encryption from "../components/main/Encryption";
+import { Experience } from "../components/main/Experience";
 import Hero from "../components/main/Hero";
 import Projects from "../components/main/Projects";
 import Skills from "../components/main/Skills";
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
         <Skills />
         <Encryption />
+        <Experience/>
         <Projects />
       </div>
     </main>
