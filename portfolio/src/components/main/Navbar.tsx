@@ -24,14 +24,14 @@ const Navbar = () => {
           </div>
 
           <span
-            className='font-bold ml-[10px] hidden md:block text-[#b49bff]'
+            className='font-bold ml-[10px] hidden md:block text-white'
             style={{
               fontSize: '1.7rem',
               fontWeight: '800',
               letterSpacing: '5px',
             }}
           >
-            <span className='text-[#b49bff]'>F</span>arrukh
+            Farrukh
           </span>
         </a>
 

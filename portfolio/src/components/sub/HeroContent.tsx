@@ -8,6 +8,7 @@ import {
   slideInFromTop,
 } from '../../utils/motion';
 import { SparklesIcon } from '@heroicons/react/24/solid';
+
 import Image from 'next/image';
 
 const HeroContent = () => {
@@ -51,13 +52,30 @@ const HeroContent = () => {
           variants={slideInFromLeft(0.8)}
           className='text-lg text-gray-400 my-5 max-w-[600px]'
         >
-         Passionate and skilled full-stack developer with extensive experience in developing and maintaining high-performance web applications. 
+          Passionate and skilled full-stack developer with extensive experience
+          in developing and maintaining high-performance web applications.
         </motion.p>
         <motion.a
           variants={slideInFromLeft(1)}
-          className='py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]'
+          href='/Farrukh_Resume.pdf'
+          className='py-2 button-primary cursor-pointer text-white  rounded-lg max-w-[200px] flex items-center justify-center gap-2'
+          download
         >
-          Learn More!
+          <span>Download Resume</span>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            viewBox='0 0 24 24'
+            strokeWidth={1.5}
+            stroke='currentColor'
+            className='w-6 h-6'
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3'
+            />
+          </svg>
         </motion.a>
       </div>
 
