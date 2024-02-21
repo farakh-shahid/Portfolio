@@ -32,18 +32,18 @@ const HeroContent = () => {
           className='flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[600px] w-auto h-auto'
         >
           <span>
-            Hi There{' '}
+            Hi, There{' '}
             <span className='wave' role='img' aria-labelledby='wave'>
               👋🏻
             </span>
             <br />
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>
               {' '}
-              IM
+              I&apos;m
             </span>
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>
               {' '}
-              MUHAMMAD FARRUKH{' '}
+              Muhammad Farrukh{' '}
             </span>
           </span>
         </motion.div>

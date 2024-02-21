@@ -14,17 +14,17 @@ const Navbar = () => {
         >
          
           <div className='ml-[33px]'>
-            <Image
+            {/* <Image
               className='mr-[10px] cursor-pointer hover:animate-slowspin w-10 h-10 p-1 rounded-full ring-2 ring-[#b49bff] dark:ring-purple-500'
               src='/avatar1.jpg'
               alt='Bordered avatar'
               width={70}
             height={70}
-            />
+            /> */}
           </div>
 
           <span
-            className='font-bold ml-[10px] hidden md:block text-white'
+            className='font-bold ml-[1px] hidden md:block text-white'
             style={{
               fontSize: '1.7rem',
               fontWeight: '800',
@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className='w-[500px] h-full flex flex-row items-center justify-between md:mr-20'>
           <div className='flex items-center justify-between w-full h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200'>
             {Array.from(navItems, ([key, value]) => (
-              <a href={value.href} className='cursor-pointer' key={key}>
+              <a href={value.href}   className='cursor-pointer text-base font-normal text-gray-400 tracking-wide border-b border-transparent transition-all duration-300 hover:text-[#F8D3FD] ' key={key}>
                 {value.label}
               </a>
             ))}

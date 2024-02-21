@@ -1,6 +1,5 @@
 export const navItems = new Map([
-    ['about', { href: '#about-me', label: 'About me' }],
+    ['about', { href: '#about-me', label: 'Home' }],
     ['skills', { href: '#skills', label: 'Skills' }],
-    ['projects', { href: '#projects', label: 'Projects' }],
-    ['resume', { href: '/resume', label: 'Resume' }],
+    ['projects', { href: '#projects', label: 'Experience' }],
   ]);

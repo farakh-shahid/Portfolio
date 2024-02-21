@@ -2,7 +2,7 @@ export const experiences = [
     {
       title: "FullStack Engineer ",
       company_name: "DEVSINC",
-      icon: '/nest-js-icon.png',
+      icon: '/devsinc.png',
       iconBg: "#EDF2F8",
       date: "Jan 2023 - Present",
       link: "https://www.linkedin.com/company/developers-inc/",
@@ -22,7 +22,7 @@ export const experiences = [
     {
       title: "Backend Developer",
       company_name: "DEVSINC",
-      icon: '/nest-js-icon.png',
+      icon: '/devsinc.png',
       iconBg: "#EDF2F8",
       date: "Jun 2022 - Jan 2023",
       link: "https://www.linkedin.com/company/developers-inc/",
@@ -43,8 +43,8 @@ export const experiences = [
   
     {
       title: "Frontend Developer",
-      company_name: "ISSM",
-      icon: '/nest-js-icon.png',
+      company_name: "Bitnine Global",
+      icon: '/bitnine.png',
       iconBg: "grey",
       date: "Dec 2021 - May 2022",
       link: "https://www.linkedin.com/company/issm-ai/",
@@ -58,9 +58,9 @@ export const experiences = [
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: "1.2rem",
+        marginLeft: ".5rem",
         marginTop: ".3rem",
-        width: "30%",
+     
       },
     },
   ];
