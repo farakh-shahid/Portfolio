@@ -10,9 +10,10 @@ interface Props {
   width: number;
   height: number;
   index: number;
+  title: string;
 }
 
-const SkillDataProvider = ({ src, width, height, index }: Props) => {
+const SkillDataProvider = ({ src, width, height, index, title }: Props) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
   });
@@ -22,7 +23,7 @@ const SkillDataProvider = ({ src, width, height, index }: Props) => {
     visible: { opacity: 1 },
   };
 
-  const animationDelay = 0.3;
+  const animationDelay = 0.4;
   return (
     <motion.div
       ref={ref}
@@ -31,8 +32,10 @@ const SkillDataProvider = ({ src, width, height, index }: Props) => {
       animate={inView ? 'visible' : 'hidden'}
       custom={index}
       transition={{ delay: index * animationDelay }}
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <Image src={src} width={width} height={height} alt='skill image'   />
+      <Image src={src} width={width} height={height} alt='skill image'  className='mb-1' />
+      <span className='text-[12px] text-gray-500'>{title}</span>
     </motion.div>
   );
 };
