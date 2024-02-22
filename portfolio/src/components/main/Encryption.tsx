@@ -46,7 +46,7 @@ const Encryption = () => {
         </div>
       </div>
       <div className='absolute z-[20] bottom-[10px] px-[5px] ml-[45px]'>
-        <div className='Welcome-box py-[10px] px-[10px] border border-[#ff014f] opacity-[0.9] cursive text-[13px] font-medium text-center text-gray-300'>
+        <div className='Welcome-box py-[10px] px-[10px] border border-[#ff014f] opacity-[0.9] cursive text-[13px] font-medium text-center text-[#ff014f]'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -61,7 +61,10 @@ const Encryption = () => {
               d='M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z'
             />
           </svg>
-          Secure your data with end-to-end encryption
+          <span className='font-bodyFont ml-[8px]'>
+            {' '}
+            Secure your data with end-to-end encryption
+          </span>
         </div>
       </div>
 

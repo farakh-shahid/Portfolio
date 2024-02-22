@@ -49,7 +49,7 @@ const HeroContent = () => {
 
         <motion.p
           variants={slideInFromLeft(0.8)}
-          className='text-lg text-gray-400 my-5 max-w-[600px]'
+          className='text-lg text-gray-400 my-5 font-bodyFont max-w-[600px]'
         >
           Passionate and skilled full-stack developer with extensive experience
           in developing and maintaining high-performance web applications.
@@ -57,7 +57,7 @@ const HeroContent = () => {
         <motion.a
           variants={slideInFromLeft(1)}
           href='/Farrukh_Resume.pdf'
-          className='py-2 button-primary cursor-pointer text-white  rounded-lg max-w-[200px] flex items-center justify-center gap-2'
+          className=' font-bodyFont py-2 button-primary cursor-pointer text-white  rounded-lg max-w-[200px] flex items-center justify-center gap-2'
           download
         >
           <span>Download Resume</span>

@@ -49,7 +49,7 @@ export const Experience = () => {
         <div>
           <h3 className='text-[24px]  font-bold'>{experience.title}</h3>
           <p
-            className='text-secondary text-[16px]'
+            className='text-secondary text-[16px] font-bodyFont'
             style={{ margin: 0, fontWeight: '500' }}
           >
             {experience.company_name}
@@ -76,7 +76,7 @@ export const Experience = () => {
             ) => (
               <li
                 key={`experience-point-${index}`}
-                className='text-gray-300 text-[14px] pl-1 tracking-wider'
+                className='text-gray-300 text-[14px] pl-1 tracking-wider font-bodyFont'
               >
                 {point}
               </li>
