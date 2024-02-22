@@ -21,18 +21,16 @@ export const Experience = () => {
           boxShadow:
             'rgba(42 14 97 / 0.6) 0px 0px 2px 2px, rgba(42 14 97 / 0.6) 0px 0px 2px 2px',
         }}
-    
         contentArrowStyle={{ borderRight: '10px solid  #2a0c6199' }}
-        dateClassName={ 'Welcome-text' }
-
+        dateClassName={'Welcome-text'}
         date={experience.date}
         visible={true}
-       
-        iconStyle={{ background: '#2a0c6199' , color: '#000'}}
+        iconStyle={{ background: '#2a0c6199', color: '#000' }}
         icon={
           <a
             style={experience.styles}
             href={experience.link}
+            target='_blank'
             className={
               experience.company_name === 'ISSM' ? 'icon-issm' : undefined
             }
@@ -43,7 +41,6 @@ export const Experience = () => {
               style={{
                 width: '95%',
                 height: '95%',
-          
               }}
             />
           </a>
@@ -91,7 +88,7 @@ export const Experience = () => {
   };
   return (
     <div
-      className='flex flex-col items-center justify-center py-20'
+      className='flex flex-col items-center justify-center py-20 z-[20]'
       id='projects'
     >
       <h1 className=''>
@@ -105,16 +102,14 @@ export const Experience = () => {
         </motion.div>
       </h1>
       <div className='mt-10 flex flex-col cursor-pointer'>
-       
-          <VerticalTimeline lineColor={'#2a0c6199'} animate={true} >
-            {experiences.map((experience, index) => (
-              <ExperienceCard
-                key={`experience-${index}`}
-                experience={experience}
-              />
-            ))}
-          </VerticalTimeline>
-
+        <VerticalTimeline lineColor={'#2a0c6199'} animate={true}>
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={`experience-${index}`}
+              experience={experience}
+            />
+          ))}
+        </VerticalTimeline>
       </div>
     </div>
   );

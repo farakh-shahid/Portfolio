@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -37,11 +36,11 @@ const HeroContent = () => {
               👋🏻
             </span>
             <br />
-            <span className='' style={{color: 'rgb(255, 1, 79)'}}>
+            <span className='' style={{ color: 'rgb(255, 1, 79)' }}>
               {' '}
               I&apos;m
             </span>
-            <span className='' style={{color: 'rgb(255, 1, 79)'}}>
+            <span className='' style={{ color: 'rgb(255, 1, 79)' }}>
               {' '}
               Muhammad Farrukh{' '}
             </span>

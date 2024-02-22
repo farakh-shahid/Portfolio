@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -34,7 +33,13 @@ const SkillDataProvider = ({ src, width, height, index, title }: Props) => {
       transition={{ delay: index * animationDelay }}
       style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
     >
-      <Image src={src} width={width} height={height} alt='skill image'  className='mb-1' />
+      <Image
+        src={src}
+        width={width}
+        height={height}
+        alt='skill image'
+        className='mb-1'
+      />
       <span className='text-[12px] text-gray-500'>{title}</span>
     </motion.div>
   );
