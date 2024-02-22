@@ -38,7 +38,7 @@ const Navbar = () => {
         <div className='w-[500px] h-full flex flex-row items-center justify-between md:mr-20'>
           <div className='flex items-center justify-between w-full h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200'>
             {Array.from(navItems, ([key, value]) => (
-              <a href={value.href}   className='cursor-pointer text-base font-normal text-gray-400 tracking-wide border-b border-transparent transition-all duration-300 hover:text-[#F8D3FD] ' key={key}>
+              <a href={value.href}   className='cursor-pointer text-base font-normal text-gray-100 tracking-wide border-b border-transparent transition-all duration-300 hover:text-[#ff014f] ' key={key}>
                 {value.label}
               </a>
             ))}

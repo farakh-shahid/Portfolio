@@ -37,11 +37,11 @@ const HeroContent = () => {
               👋🏻
             </span>
             <br />
-            <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>
+            <span className='' style={{color: 'rgb(255, 1, 79)'}}>
               {' '}
               I&apos;m
             </span>
-            <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>
+            <span className='' style={{color: 'rgb(255, 1, 79)'}}>
               {' '}
               Muhammad Farrukh{' '}
             </span>
