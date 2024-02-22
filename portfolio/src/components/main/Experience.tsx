@@ -88,7 +88,7 @@ export const Experience = () => {
   };
   return (
     <div
-      className='flex flex-col items-center justify-center py-20 z-[20]'
+      className='flex flex-col items-center justify-center py-20 z-[20] ml-[45px]'
       id='projects'
     >
       <h1 className=''>

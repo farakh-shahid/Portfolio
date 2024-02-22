@@ -31,16 +31,21 @@ const SkillDataProvider = ({ src, width, height, index, title }: Props) => {
       animate={inView ? 'visible' : 'hidden'}
       custom={index}
       transition={{ delay: index * animationDelay }}
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        zIndex: '20',
+      }}
     >
       <Image
         src={src}
         width={width}
         height={height}
         alt='skill image'
-        className='mb-1'
+        className='mb-1 picture'
       />
-      <span className='text-[12px] text-gray-500'>{title}</span>
+      <span className='text-[12px] text-gray-500 '>{title}</span>
     </motion.div>
   );
 };

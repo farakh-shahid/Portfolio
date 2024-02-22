@@ -9,10 +9,10 @@ import { SparklesIcon } from '@heroicons/react/24/solid';
 const Encryption = () => {
   return (
     <div className='flex flex-row relative items-center justify-center min-h-screen w-full h-full'>
-      <div className='absolute w-auto h-auto top-0 z-[5]'>
+      <div className='absolute w-auto h-auto top-0 z-[5] ml-[45px]'>
         <motion.div
           variants={slideInFromTop}
-          className='text-[40px] font-medium text-center text-gray-200'
+          className='text-[30px] font-medium text-center text-gray-200'
         >
           Performance
           <span className='text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'>
@@ -45,7 +45,7 @@ const Encryption = () => {
           <h1 className='Welcome-text text-[12px]'>Encryption</h1>
         </div>
       </div>
-      <div className='absolute z-[20] bottom-[10px] px-[5px]'>
+      <div className='absolute z-[20] bottom-[10px] px-[5px] ml-[45px]'>
         <div className='Welcome-box py-[10px] px-[10px] border border-[#ff014f] opacity-[0.9] cursive text-[13px] font-medium text-center text-gray-300'>
           <svg
             xmlns='http://www.w3.org/2000/svg'

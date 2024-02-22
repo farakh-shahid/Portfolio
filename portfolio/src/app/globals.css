@@ -123,3 +123,11 @@ html {
     @apply w-full rounded-lg border-b-[1px] border-b-gray-600 bg-[#191b1e] text-lightText px-4 py-2 active:outline-none focus-visible:outline-designColor outline-none focus-visible:border-b-transparent duration-300 resize-none;
   }
 }
+
+.picture {
+  transition: transform 0.5s ease-in-out;
+}
+
+.picture:hover {
+  transform: scale(1.2);
+}
