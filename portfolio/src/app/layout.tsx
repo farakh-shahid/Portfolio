@@ -9,7 +9,8 @@ import Navbar from '../components/main/Navbar';
 
 export const metadata: Metadata = {
   title: 'Muhammad Farrukh',
-  description: 'Full Stack Developer',
+  description:
+    'Passionate and skilled full-stack developer with expertise in developing and maintaining web applications using multiple APIs, third-party integrations, and databases. Proficient in both front-end and back-end development, with a focus on crafting elegant user experiences and implementing robust server-side solutions. Proficient in in utilizing cutting-edge technologies such as Rails, Node ReactJS, NextJS, Vue and NestJS.',
 };
 
 export default function RootLayout({
