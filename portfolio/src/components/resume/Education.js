@@ -8,25 +8,26 @@ const Education = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className='w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20'
+      className='flex flex-col lgl:flex-row gap-10 lgl:gap-20'
     >
       {/* part one */}
       <div>
         <div className='py-6 lgl:py-12 font-titleFont flex flex-col gap-4'>
-          <p className='text-sm text-designColor tracking-[4px]'>1998 - 2010</p>
+          <p className='text-sm text-designColor tracking-[4px]'>2014 - 2022</p>
           <h2 className='text-3xl md:text-4xl font-bold text-[#C4CFDE]'>
-            Education Quality
+            Education
           </h2>
         </div>
         <div className='mt-6 lgl:mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
-            title='BSc in Computer Science'
-            subTitle='University of DVI (2006 - 2010)'
-            result='3.90/4'
-            des='The training provided by universities in order to prepare people to work in various sectors of the economy or areas of culture.'
+            title='Bachelor In Computer Science'
+            subTitle='Air University Islamabad (2018 - 2022)'
+            result='76%'
+            des='Completed coursework in areas such as object-oriented programming, data structures, computer networks,
+            software engineering, databases, operating systems, and computer architecture.'
           />
           <ResumeCard
-            title='AS - Science & Information'
+            title='Intermedita'
             subTitle='SuperKing College (2001 - 2005)'
             result='4.75/5'
             des='Higher education is tertiary education leading to award of an academic degree. Higher education, also called post-secondary education.'
@@ -43,7 +44,7 @@ const Education = () => {
 
       <div>
         <div className='py-6 lgl:py-12 font-titleFont flex flex-col gap-4'>
-          <p className='text-sm text-designColor tracking-[4px]'>2010 - 2022</p>
+          <p className='text-sm text-designColor tracking-[4px]'>2022</p>
           <h2 className='text-3xl md:text-4xl font-bold text-[#C4CFDE]'>
             Job Experience
           </h2>

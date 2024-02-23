@@ -93,7 +93,7 @@ export const Experience = () => {
     >
       <h1 className=''>
         <motion.div
-          variants={slideInFromTop}
+          variants={slideInFromLeft(0.4)}
           className='text-[40px] font-medium text-center text-gray-200 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500'
         >
           Work

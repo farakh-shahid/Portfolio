@@ -6,24 +6,34 @@ import Achievement from './Achievement';
 import Experience from './Experience';
 import { motion } from 'framer-motion';
 
+import { slideInFromLeft } from '@/src/utils/motion';
+import Title from '../layouts/Title';
+// import { Experience } from '@/src/components/main/Experience';
+
 const Resume = () => {
   const [educationData, setEducationData] = useState(true);
   const [skillData, setSkillData] = useState(false);
   const [experienceData, setExperienceData] = useState(false);
   const [achievementData, setAchievementData] = useState(false);
   return (
-    <motion.div
-      initial='hidden'
-      animate='visible'
-      className='flex flex-row items-center justify-center px-[200px] mt-40 w-full z-[20]'
-    >
+    <>
       <section
         id='resume'
-        className='w-full py-20 border-b-[1px] border-b-black z-[20]'
+        className='p-[200px] py-20 border-b-[1px] border-b-black z-[20]'
       >
+        <div className='flex justify-center items-center text-center'>
+          <Title title='' des='Work & Experience' />
+        </div>
         <div className='flex justify-center items-center text-center'></div>
         <div>
-          <ul className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4'>
+          <ul
+            className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 '
+            style={{
+              display: 'flex',
+              boxShadow: 'inset 0 0 12px #bf97ff3d',
+              borderRadius: '0.5rem',
+            }}
+          >
             <li
               onClick={() =>
                 setEducationData(true) &
@@ -69,7 +79,7 @@ const Resume = () => {
             >
               Experience
             </li>
-            <li
+            {/* <li
               onClick={() =>
                 setEducationData(false) &
                 setSkillData(false) &
@@ -83,7 +93,7 @@ const Resume = () => {
               } resumeLi`}
             >
               Achievements
-            </li>
+            </li> */}
           </ul>
         </div>
         {educationData && <Education />}
@@ -91,7 +101,7 @@ const Resume = () => {
         {achievementData && <Achievement />}
         {experienceData && <Experience />}
       </section>
-    </motion.div>
+    </>
   );
 };
 
