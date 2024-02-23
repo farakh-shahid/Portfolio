@@ -1,18 +1,20 @@
-import Encryption from "../components/main/Encryption";
-import { Experience } from "../components/main/Experience";
-import Hero from "../components/main/Hero";
-import Projects from "../components/main/Projects";
-import Skills from "../components/main/Skills";
-import Image from "next/image";
+import Encryption from '../components/main/Encryption';
+import { Experience } from '../components/main/Experience';
+import Hero from '../components/main/Hero';
+import Projects from '../components/main/Projects';
+import Skills from '../components/main/Skills';
+import Image from 'next/image';
+import Resume from '../components/resume/page';
 
 export default function Home() {
   return (
-    <main className="h-full w-full">
-      <div className="flex flex-col gap-20">
+    <main className='h-full w-full'>
+      <div className='flex flex-col gap-20'>
         <Hero />
         <Skills />
         <Encryption />
-        <Experience/>
+        {/* <Experience /> */}
+        <Resume />
         <Projects />
       </div>
     </main>

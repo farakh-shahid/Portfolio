@@ -7,9 +7,22 @@ import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      let currentSection = '';
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - sectionHeight * 0.25) {
+          currentSection = section.getAttribute('id');
+          console.log('section', currentSection);
+        }
+      });
+
+      // setActiveSection(currentSection);
       const isTop = window.scrollY < 340;
       if (isTop !== scrolling) {
         setScrolling(isTop);
@@ -26,7 +39,7 @@ const Navbar = () => {
   const shadowColor = scrolling ? '#2A0E61' : '#ff014f';
   return (
     <div
-      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[${shadowColor}]/30 bg-[#03001417] backdrop-blur-md z-50 px-10`}
+      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[#ff014f]/30 bg-[#03001417] backdrop-blur-md z-50 px-10`}
     >
       <div className='w-full h-full flex flex-row items-center justify-between m-auto px-[10px]'>
         <Link href='/' legacyBehavior passHref>

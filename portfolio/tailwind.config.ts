@@ -14,6 +14,9 @@ module.exports = {
       bodyFont: ['Poppins', 'sans-serif'],
       titleFont: ['Montserrat', 'sans-serif'],
     },
+    container: {
+      center: true,
+    },
     extend: {
       screens: {
         xs: '320px',
@@ -37,7 +40,7 @@ module.exports = {
         designColor: '#ff014f',
       },
       boxShadow: {
-        shadowOne: '10px 10px 19px #1c1e22, -10px -10px 19px #262a2e',
+        shadowOne: '0px 0px 0px #2a0c6199, 0px 0px 6px #2a0c6199',
       },
     },
   },
