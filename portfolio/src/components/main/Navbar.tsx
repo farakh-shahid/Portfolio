@@ -7,9 +7,22 @@ import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      let currentSection = '';
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - sectionHeight * 0.25) {
+          currentSection = section.getAttribute('id');
+          console.log('section', currentSection);
+        }
+      });
+
+      // setActiveSection(currentSection);
       const isTop = window.scrollY < 340;
       if (isTop !== scrolling) {
         setScrolling(isTop);
