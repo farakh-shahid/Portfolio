@@ -15,7 +15,7 @@ const Experience = () => {
           <p className='text-sm text-designColor tracking-[4px]'>2010 - 2022</p>
           <h2 className='text-4xl font-bold'>Job Experience</h2>
         </div>
-        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10'>
+        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
             title='Sr. Software Engineer'
             subTitle='Google Out Tech - (2017 - Present)'
@@ -37,11 +37,11 @@ const Experience = () => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col gap-4'>
+        {/* <div className='flex flex-col gap-4'>
           <p className='text-sm text-designColor tracking-[4px]'>2001 - 2020</p>
           <h2 className='text-4xl font-bold'>Trainer Experience</h2>
         </div>
-        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10'>
+        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10 Welcome-box'>
           <ResumeCard
             title='Gym Instructor'
             subTitle='Rainbow Gym Center (2015 - 2020)'
@@ -60,7 +60,7 @@ const Experience = () => {
             result='NEVADA'
             des='Secondary education or post-primary education covers two phases on the International Standard Classification of Education scale.'
           />
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );

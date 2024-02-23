@@ -15,7 +15,7 @@ const Achievement = () => {
           <p className='text-sm text-designColor tracking-[4px]'>2007 - 2010</p>
           <h2 className='text-4xl font-bold'>Company Experience</h2>
         </div>
-        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-black border-opacity-30 flex flex-col gap-10'>
+        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-[#2a0c6199] border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
             title='Lorem ipsum dolor sit amet.'
             subTitle='Lorem ipsum dolor sit amet alternative.'
