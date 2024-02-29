@@ -15,7 +15,7 @@ const Experience = () => {
           <p className='text-sm text-designColor tracking-[4px]'>2010 - 2022</p>
           <h2 className='text-4xl font-bold'>Job Experience</h2>
         </div>
-        <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
+        <div className='mt-14 w-full h-auto  border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
             title='FullStack Engineer'
             subTitle='Devsinc'
