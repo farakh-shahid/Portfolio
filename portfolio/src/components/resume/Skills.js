@@ -6,7 +6,7 @@ const Skills = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className='py-12 font-titleFont flex gap-20 text-lightText'
+      className=' font-titleFont flex gap-20 text-lightText'
     >
       <div className='w-full lgl:w-1/2'>
         <div className='py-12 font-titleFont flex flex-col gap-4'>
