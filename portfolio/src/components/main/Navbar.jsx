@@ -39,15 +39,15 @@ const Navbar = () => {
   const shadowColor = scrolling ? '#2A0E61' : '#ff014f';
   return (
     <div
-      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[#ff014f]/30 bg-[#03001417] backdrop-blur-md z-50 px-10`}
+      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[#ff014f]/30 bg-[#03001417] backdrop-blur-md z-50 px-3 md:px-10`}
     >
-      <div className='w-full h-full flex flex-row items-center justify-between m-auto px-[10px]'>
+      <div className='w-full h-full flex flex-row items-center justify-between m-auto'>
         <Link href='/' legacyBehavior passHref>
-          <a className='h-auto w-auto flex flex-row items-center '>
-            <div className='ml-[33px]'></div>
+          <a className='h-auto w-auto flex flex-row items-center'>
+            <div className='md:ml-[33px]'></div>
 
             <span
-              className='font-bold ml-[1px] hidden md:block text-white'
+              className='font-bold ml-[1px] text-white'
               style={{
                 fontSize: '1.7rem',
                 fontWeight: '800',
@@ -58,7 +58,7 @@ const Navbar = () => {
             </span>
           </a>
         </Link>
-        <div className='w-[500px] h-full flex flex-row items-center justify-between md:mr-20'>
+        <div className='w-[500px] h-full md:flex flex-row items-center justify-between md:mr-20 hidden'>
           <div className='flex items-center justify-between w-full h-auto border border-[#ff014f] border-opacity-70 bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200'>
             {Array.from(navItems, ([key, value]) => (
               <a

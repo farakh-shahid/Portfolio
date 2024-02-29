@@ -13,13 +13,13 @@ const SkillText = () => {
     <div className='w-full h-auto flex flex-col items-center justify-center z-[20]'>
       <motion.div
         variants={slideInFromTop}
-        className='Welcome-box py-[8px] px-[7px] border border-[#ff014f] opacity-[0.9] ml-[45px]'
+        className='Welcome-box py-[8px] px-[7px] border border-[#ff014f] opacity-[0.9] md:ml-[45px]'
       >
         <SparklesIcon
           className=' mr-[10px] h-5 w-5'
           style={{ color: '#ff014f' }}
         />
-        <h1 className='text-[16px]' style={{ color: '#ff014f' }}>
+        <h1 className='text-[11px] md:text-[16px]' style={{ color: '#ff014f' }}>
           Empowering Innovation: Elevate Your Experience
         </h1>
       </motion.div>
