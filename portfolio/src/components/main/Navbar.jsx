@@ -22,7 +22,6 @@ const Navbar = () => {
         }
       });
 
-      // setActiveSection(currentSection);
       const isTop = window.scrollY < 340;
       if (isTop !== scrolling) {
         setScrolling(isTop);
@@ -39,7 +38,7 @@ const Navbar = () => {
   const shadowColor = scrolling ? '#2A0E61' : '#ff014f';
   return (
     <div
-      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[#ff014f]/30 bg-[#03001417] backdrop-blur-md z-50 px-3 md:px-10`}
+      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[${shadowColor}]/30 bg-[#03001417] backdrop-blur-md z-50 px-3 md:px-10`}
     >
       <div className='w-full h-full flex flex-row items-center justify-between m-auto'>
         <Link href='/' legacyBehavior passHref>
