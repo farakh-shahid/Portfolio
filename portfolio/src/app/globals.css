@@ -3,6 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  color: #ff014f;
+}
 .body {
   font-family: 'Montserrat', sans-serif !important;
 }

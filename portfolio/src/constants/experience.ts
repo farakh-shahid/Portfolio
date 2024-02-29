@@ -1,6 +1,6 @@
 export const experiences = [
   {
-    title: 'FullStack Engineer ',
+    title: 'FullStack Engineer',
     company_name: 'DEVSINC',
     icon: '/devsinc.png',
     iconBg: '#EDF2F8',
