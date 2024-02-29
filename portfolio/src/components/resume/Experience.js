@@ -17,22 +17,29 @@ const Experience = () => {
         </div>
         <div className='mt-14 w-full h-[1000px] border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
-            title='Sr. Software Engineer'
-            subTitle='Google Out Tech - (2017 - Present)'
-            result='USA'
-            des="Google's hiring process is an important part of our culture. Googlers care deeply about their teams and the people who make them up."
+            title='FullStack Engineer'
+            subTitle='Devsinc'
+            result='Pakistan'
+            des='Successfully migrated legacy codebases to modern NodeJS versions, resulting in improved performance and maintainability.
+            Utilized Next JS to create front-end functionality and interact with RESTful APIs written in NodeJS, enabling seamless data binding to specific views.
+            Worked closely with the DevOps team to automate deployment processes and ensure continuous integration and delivery (CI/CD)'
           />
           <ResumeCard
-            title='Web Developer & Trainer'
-            subTitle='Apple Developer Team - (2012 - 2016)'
-            result='MALAYSIA'
-            des="A popular destination with a growing number of highly qualified homegrown graduates, it's true that securing a role in Malaysia isn't easy."
+            title='Backend Developer'
+            subTitle='Devsinc'
+            result='Pakistan'
+            des='Proficient in developing web applications using NestJS in an MVC architecture, building robust and scalable back-end systems.
+            Employed MongoDB as the database for the NodeJS applications, ensuring efficient and reliable data storage and retrieval.
+            Implemented best practices for security, including data encryption and protection against common web vulnerabilities'
           />
           <ResumeCard
-            title='Front-end Developer'
-            subTitle='Nike - (2020 - 2011)'
-            result='Oman'
-            des='The Oman economy has grown strongly over recent years, having transformed itself from a producer and innovation-based economy.'
+            title='Frontend Developer'
+            subTitle='Bitnine Global'
+            result='Cananda - (Remote)'
+            des='Developing reusable UI/UX components in React JS using HTML, CSS, Bootstrap, and Material UI.
+            Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.
+            Implementing responsive design and ensuring cross-browser compatibility.
+            Participating in code reviews and providing constructive feedback to other developers'
           />
         </div>
       </div>
