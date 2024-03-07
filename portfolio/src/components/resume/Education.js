@@ -25,14 +25,14 @@ const Education = () => {
             des='Completed coursework in areas such as object-oriented programming, data structures, computer networks,
             software engineering databases, operating systems, and computer architecture.
             Gained hands-on experience in designing and implementing software development methodologies through
-practical projects and assignments.
-Demonstrated proficiency in programming languages such as C++, C#, JavaScript, & Ruby.
-Led development of Facebook Clone project on MERN stack using TypeScript. Utilized context API for state
-management and SocketIO for real-time updates, Implemented user Authentication & Authorization.
-Demonstrated strong written and verbal communication skills through presentations, reports, and interaction
-with peers and faculty'
+            practical projects and assignments.
+            Demonstrated proficiency in programming languages such as C++, C#, JavaScript, & Ruby.
+            Led development of Facebook Clone project on MERN stack using TypeScript. Utilized context API for state
+            management and SocketIO for real-time updates, Implemented user Authentication & Authorization.
+            Demonstrated strong written and verbal communication skills through presentations, reports, and interaction
+            with peers and faculty'
           />
-          {/* <ResumeCard
+          <ResumeCard
             title='Intermeditate'
             subTitle='Fauji Foundation College '
             result='79%'
@@ -43,7 +43,7 @@ with peers and faculty'
             subTitle='Kingstar Secondary School (1998 - 2000)'
             result='5.00/5'
             des='Secondary education or post-primary education covers two phases on the International Standard Classification of Education scale.'
-          /> */}
+          />
         </div>
       </div>
     </motion.div>

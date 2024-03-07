@@ -17,8 +17,11 @@ const Resume = () => {
   const [achievementData, setAchievementData] = useState(false);
   return (
     <>
-      <div className='container  z-[40]'>
-        <section id='resume' className=' mx-auto py-20 border-b-[1px]  z-[40]'>
+      <div
+        className='md:ml-[5rem] md:mr-[2rem] lgl:ml-[5rem] lgl:mr-[5rem] xl:ml-[10rem] xl:mr-[10rem] z-[40]'
+        id='projects'
+      >
+        <section id='resume' className='mx-auto py-20   z-[40]'>
           <div className='flex justify-center items-center text-center'>
             <Title title='' des='Work & Experience' />
           </div>

@@ -4,41 +4,43 @@ import { Socials } from '../../constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import useScrollColor from '../../hooks/UseScroll';
 
 const Navbar = () => {
-  const [scrolling, setScrolling] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
+  const shadowColor = useScrollColor();
+  // const [scrolling, setScrolling] = useState(false);
+  // const [activeSection, setActiveSection] = useState(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section');
-      let currentSection = '';
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - sectionHeight * 0.25) {
-          currentSection = section.getAttribute('id');
-          console.log('section', currentSection);
-        }
-      });
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const sections = document.querySelectorAll('section');
+  //     let currentSection = '';
+  //     sections.forEach((section) => {
+  //       const sectionTop = section.offsetTop;
+  //       const sectionHeight = section.clientHeight;
+  //       if (window.scrollY >= sectionTop - sectionHeight * 0.25) {
+  //         currentSection = section.getAttribute('id');
+  //         console.log('section', currentSection);
+  //       }
+  //     });
 
-      const isTop = window.scrollY < 340;
-      if (isTop !== scrolling) {
-        setScrolling(isTop);
-      }
-    };
+  //     const isTop = window.scrollY < 340;
+  //     if (isTop !== scrolling) {
+  //       setScrolling(isTop);
+  //     }
+  //   };
 
-    document.addEventListener('scroll', handleScroll);
+  //   document.addEventListener('scroll', handleScroll);
 
-    return () => {
-      document.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolling]);
+  //   return () => {
+  //     document.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [scrolling]);
 
-  const shadowColor = scrolling ? '#2A0E61' : '#ff014f';
+  // const shadowColor = scrolling ? '#2A0E61' : '#ff014f';
   return (
     <div
-      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[${shadowColor}]/30 bg-[#03001417] backdrop-blur-md z-50 px-3 md:px-10`}
+      className={`w-full h-[65px] fixed top-0 shadow-lg shadow-[${shadowColor}]/20 bg-[#03001417] backdrop-blur-md z-50 px-3 md:px-10`}
     >
       <div className='w-full h-full flex flex-row items-center justify-between m-auto'>
         <Link href='/' legacyBehavior passHref>
@@ -62,7 +64,7 @@ const Navbar = () => {
             {Array.from(navItems, ([key, value]) => (
               <a
                 href={value.href}
-                className='font-semibold cursor-pointer text-base font-normal text-gray-100 tracking-wide border-b border-transparent transition-all duration-300 hover:text-[#ff014f] '
+                className='cursor-pointer text-base font-normal text-gray-100 tracking-wide border-b border-transparent transition-all duration-300 hover:text-[#ff014f] '
                 key={key}
               >
                 {value.label}
