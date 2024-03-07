@@ -32,7 +32,7 @@ const Education = () => {
             Demonstrated strong written and verbal communication skills through presentations, reports, and interaction
             with peers and faculty'
           />
-          <ResumeCard
+          {/* <ResumeCard
             title='Intermeditate'
             subTitle='Fauji Foundation College '
             result='79%'
@@ -43,7 +43,7 @@ const Education = () => {
             subTitle='Kingstar Secondary School (1998 - 2000)'
             result='5.00/5'
             des='Secondary education or post-primary education covers two phases on the International Standard Classification of Education scale.'
-          />
+          /> */}
         </div>
       </div>
     </motion.div>
