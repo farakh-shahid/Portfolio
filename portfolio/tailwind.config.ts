@@ -16,6 +16,9 @@ module.exports = {
     },
     container: {
       center: true,
+      sm: '2rem',
+      lg: '4rem',
+      xl: '5rem',
     },
     extend: {
       screens: {

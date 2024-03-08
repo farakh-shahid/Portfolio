@@ -8,14 +8,14 @@ const Experience = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className='py-12 font-titleFont flex gap-20 text-lightText'
+      className='py-12  font-titleFont flex gap-20 text-lightText'
     >
       <div>
         <div className='flex flex-col gap-4'>
           <p className='text-sm text-designColor tracking-[4px]'>2010 - 2022</p>
           <h2 className='text-4xl font-bold'>Job Experience</h2>
         </div>
-        <div className='  mt-14 w-full h-auto  border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
+        <div className='mt-14 w-full h-auto  border-l-[6px] border-l-[#2a0c612b] border-opacity-30 flex flex-col gap-10'>
           <ResumeCard
             title='FullStack Engineer'
             subTitle='Devsinc'

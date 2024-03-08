@@ -1,6 +1,7 @@
+import React from 'react';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
+import 'animate.css';
 import StarsCanvas from '../components/main/StarBackground';
 import Navbar from '../components/main/Navbar';
 // import Footer from "@/components/main/Footer";
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='bg-[#030014] overflow-y-scroll overflow-x-hidden'>
-        <StarsCanvas />
+        {/* <StarsCanvas /> */}
         <Navbar />
         {children}
       </body>
