@@ -1783,16 +1783,55 @@ h3 {
 
 @media (max-width: 760px) {
   .layout {
-    padding-bottom: 8.8rem;
+    padding-top: 5.1rem;
+    padding-bottom: 5.8rem;
   }
 
   .bottom-progress-nav {
-    border-radius: 18px;
-    padding-inline: 0.4rem;
+    width: calc(100vw - 1rem);
+    top: 0.55rem;
+    bottom: auto;
+    border-radius: 16px;
+    padding: 0.38rem 0.38rem 0.46rem;
   }
 
   .bottom-progress-links {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 0.3rem;
+    display: flex;
+    gap: 0.32rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.1rem 0.08rem 0.08rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .bottom-progress-links::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .bottom-progress-link {
+    flex: 0 0 auto;
+    min-width: 5rem;
+    font-size: 0.74rem;
+    padding: 0.46rem 0.62rem;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .layout {
+    padding-top: 5.4rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .bottom-progress-nav {
+    width: calc(100vw - 0.65rem);
+    top: 0.35rem;
+    bottom: auto;
+    border-radius: 14px;
+  }
+
+  .bottom-progress-track {
+    margin-inline: 0.3rem;
   }
 }
