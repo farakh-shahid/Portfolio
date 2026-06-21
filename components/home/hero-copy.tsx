@@ -46,7 +46,7 @@ export function HeroCopy() {
 
       <motion.div variants={heroItem} className="mt-9 flex flex-wrap items-center gap-3">
         <Link
-          href="/projects"
+          href="/#work"
           className="btn-primary group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
         >
           View case studies

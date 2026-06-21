@@ -9,9 +9,8 @@ import { siteConfig } from '@/data/site-config'
 import { cn } from '@/lib/utils/classnames'
 
 const navItems = [
-  { href: '/projects', label: 'Work' },
+  { href: '/#work', label: 'Work' },
   { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Writing' },
   { href: '/contact', label: 'Contact' },
 ]
 

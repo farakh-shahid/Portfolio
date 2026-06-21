@@ -8,6 +8,8 @@ export const editorialProfile = {
   linkedin: 'https://linkedin.com/in/farakh-shahid',
   github: 'https://github.com/farakh-shahid',
   timezone: 'Remote · GMT+5',
+  resumeUrl: '/resume/M.Farrukh-SSE.pdf',
+  resumeFilename: 'M.Farrukh-SSE.pdf',
   contactSub:
     'Based in Pakistan · open to remote/global roles. I build secure, scalable systems and polished products that perform under pressure.',
 }

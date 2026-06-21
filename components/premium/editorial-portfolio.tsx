@@ -15,6 +15,7 @@ import { useEditorialMotion } from '@/components/premium/use-editorial-motion'
 import { EditorialCursor } from '@/components/premium/editorial-cursor'
 import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
 import { HeroScrollIndicator } from '@/components/premium/hero-scroll-indicator'
+import { HeroResumeBuild } from '@/components/premium/hero-resume-build'
 
 export function EditorialPortfolio() {
   const reduceMotion = useReducedMotion()
@@ -44,6 +45,7 @@ export function EditorialPortfolio() {
             <a href="#work">Work</a>
             <a href="#story">About</a>
             <a href="#exp">Experience</a>
+            <HeroResumeBuild />
             <a href="#contact" className="av">
               Available
             </a>

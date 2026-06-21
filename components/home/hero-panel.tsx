@@ -91,7 +91,7 @@ export function HeroPanel() {
         </div>
 
         <Link
-          href={`/projects/${featured.slug}`}
+          href="/#work"
           className="group relative mt-5 flex items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-white/[0.02] px-4 py-3.5 transition hover:border-[var(--border-strong)] hover:bg-white/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
         >
           <div>

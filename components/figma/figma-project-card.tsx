@@ -1,11 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { HiArrowTopRightOnSquare } from 'react-icons/hi2'
 import { SiGithub } from 'react-icons/si'
-import type { ProjectData } from '@/types/project'
+import type { editorialProjects } from '@/data/editorial-portfolio'
 import { siteConfig } from '@/data/site-config'
+
+type EditorialProject = (typeof editorialProjects)[number]
 
 const gradients = [
   'from-indigo-900/80 via-purple-900/60 to-violet-950/80',
@@ -38,7 +39,7 @@ function ProjectMock({ index }: { index: number }) {
   )
 }
 
-export function FigmaProjectCard({ project, index }: { project: ProjectData; index: number }) {
+export function FigmaProjectCard({ project, index }: { project: EditorialProject; index: number }) {
   const reduceMotion = useReducedMotion()
   const reversed = index % 2 === 1
 
@@ -59,8 +60,11 @@ export function FigmaProjectCard({ project, index }: { project: ProjectData; ind
 
         <div className={`md:col-span-5 ${reversed ? 'md:order-1 md:-mr-8' : 'md:order-2 md:-ml-8'}`}>
           <div className="figma-glass relative z-10 rounded-2xl p-6 md:p-7">
-            <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--figma-muted)]">{project.summary}</p>
+            <h3 className="text-xl font-semibold text-white">
+              {project.title[0]}
+              {project.title[1]}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--figma-muted)]">{project.description}</p>
             <div className="mt-5 flex items-center gap-4">
               <a
                 href={siteConfig.links.github}
@@ -71,13 +75,15 @@ export function FigmaProjectCard({ project, index }: { project: ProjectData; ind
               >
                 <SiGithub className="h-5 w-5" />
               </a>
-              <Link
-                href={`/projects/${project.slug}`}
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
                 className="text-[var(--figma-muted)] transition hover:text-white"
                 aria-label="View project"
               >
                 <HiArrowTopRightOnSquare className="h-5 w-5" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
