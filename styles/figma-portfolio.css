@@ -1,0 +1,70 @@
+.figma-portfolio {
+  --figma-bg: #050505;
+  --figma-surface: rgba(255, 255, 255, 0.04);
+  --figma-border: rgba(255, 255, 255, 0.08);
+  --figma-text: #e4e4e7;
+  --figma-muted: #71717a;
+  --figma-purple: #a855f7;
+  --figma-purple-soft: #c084fc;
+  --figma-cyan: #67e8f9;
+  --figma-glow: rgba(168, 85, 247, 0.35);
+  background: var(--figma-bg);
+  color: var(--figma-text);
+  overflow-x: hidden;
+}
+
+.figma-glass {
+  border: 1px solid var(--figma-border);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.figma-glow-orb {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, var(--figma-glow) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.figma-script {
+  font-family: var(--font-script), cursive;
+  color: var(--figma-purple-soft);
+  font-style: normal;
+}
+
+.figma-highlight {
+  color: var(--figma-cyan);
+}
+
+.figma-cursor {
+  animation: figma-blink 1s step-end infinite;
+}
+
+@keyframes figma-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.figma-scroll-hint {
+  animation: figma-bounce 2s ease-in-out infinite;
+}
+
+@keyframes figma-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figma-cursor,
+  .figma-scroll-hint {
+    animation: none;
+  }
+}

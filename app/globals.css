@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+@import '../styles/hero.css';
+@import '../styles/aesthetic.css';
+@import 'lenis/dist/lenis.css';
+@import '../styles/editorial.css';
+@import '../styles/prose.css';
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Base matches SiteBackdrop; gradients live in SiteBackdrop for one consistent canvas. */
+  background-color: var(--bg-0);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 55%, transparent);
+  color: white;
+}
+
+@keyframes hero-ambient {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(2%, -3%, 0) scale(1.05);
+    opacity: 0.55;
+  }
+}
+
+@keyframes hero-wave-drift {
+  0%,
+  100% {
+    transform: translateX(-8%) scaleY(1);
+  }
+  50% {
+    transform: translateX(8%) scaleY(1.08);
+  }
+}
+
+.animate-hero-ambient {
+  animation: hero-ambient 14s ease-in-out infinite;
+}
+
+.animate-hero-wave-drift {
+  animation: hero-wave-drift 18s ease-in-out infinite;
+}

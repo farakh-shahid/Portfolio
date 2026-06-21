@@ -1,0 +1,49 @@
+---
+slug: postgres-lock-optimization
+title: "PostgreSQL Lock Contention Optimization"
+summary: "Resolved high write-latency caused by synchronous trigger workloads on hot rows."
+role: "Senior Full Stack Engineer"
+timeline: "2025"
+problem: "High-frequency writes were blocked by row-level lock contention and trigger amplification."
+solution: "Moved heavy write-path logic out of triggers, redesigned transaction boundaries, and tuned indexes."
+architecture:
+  - "Next.js dashboard"
+  - "NestJS API"
+  - "PostgreSQL with optimized index strategy"
+stack:
+  - "NestJS"
+  - "Prisma"
+  - "PostgreSQL"
+  - "AWS"
+metrics:
+  - label: "lock contention reduced"
+    value: "78%"
+    context: "under production write load"
+  - label: "p95 write latency"
+    value: "420ms"
+    context: "down from 1.9s"
+  - label: "throughput increase"
+    value: "3.1x"
+    context: "without additional DB instances"
+tradeoffs:
+  - "Accepted eventual consistency for non-critical computed fields."
+  - "Added worker complexity to reduce transactional pressure."
+security:
+  - "Strict query parameterization and principle-of-least-privilege database roles."
+  - "Audit logs for write-path behavior changes."
+createdAt: "2025-02-01"
+---
+
+## Problem
+
+Write traffic spikes introduced cascading lock waits due to synchronous trigger execution on shared rows.
+
+## Approach
+
+- Profiled blocking query chains and lock wait trees.
+- Moved non-critical side effects to worker-driven asynchronous processing.
+- Introduced targeted compound indexes for high-cardinality access paths.
+
+## Outcome
+
+The system regained predictable latency and sustained peak load windows without user-visible degradation.

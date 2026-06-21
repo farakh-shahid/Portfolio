@@ -1,0 +1,49 @@
+---
+slug: iot-event-pipeline
+title: "IoT Event Pipeline at Scale"
+summary: "Designed a resilient IoT ingestion and processing flow for high-volume telemetry."
+role: "Senior Full Stack Engineer"
+timeline: "2025"
+problem: "Device bursts caused queue backlog and unstable processing times."
+solution: "Implemented buffered queue fan-out, idempotent worker logic, and better visibility into retries."
+architecture:
+  - "IoT Core ingress"
+  - "Queue-based decoupling"
+  - "Lambda/NestJS workers"
+stack:
+  - "AWS"
+  - "NestJS"
+  - "Docker"
+  - "PostgreSQL"
+metrics:
+  - label: "events/day"
+    value: "10M+"
+    context: "sustained over multiple peak windows"
+  - label: "retry failure rate"
+    value: "-65%"
+    context: "after idempotency and backoff updates"
+  - label: "delivery success"
+    value: "99.98%"
+    context: "from ingestion to storage"
+tradeoffs:
+  - "Slightly increased operational complexity for stronger reliability."
+  - "Accepted extra queue cost to isolate failure domains."
+security:
+  - "Per-device credential isolation."
+  - "Transport encryption and strict producer/consumer policies."
+createdAt: "2025-03-01"
+---
+
+## Problem
+
+Burst-heavy telemetry can overwhelm synchronous processing pipelines.
+
+## Approach
+
+- Split ingestion from processing with queue boundaries.
+- Added idempotency keys and dead-letter handling.
+- Introduced traceability for per-message processing outcomes.
+
+## Outcome
+
+Improved resilience and observability while maintaining consistent processing SLAs.

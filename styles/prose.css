@@ -1,0 +1,18 @@
+.prose-content h2,
+.prose-content h3 {
+  color: var(--text-strong);
+  margin-top: 1.4rem;
+}
+
+.prose-content p,
+.prose-content li {
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.prose-content code {
+  background: color-mix(in oklab, var(--surface) 88%, black);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.4rem;
+}

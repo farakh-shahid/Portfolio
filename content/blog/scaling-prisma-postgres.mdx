@@ -1,0 +1,24 @@
+---
+slug: scaling-prisma-postgres
+title: "Scaling Prisma + PostgreSQL in High-Write Workloads"
+excerpt: "Patterns for transaction control, index strategy, and lock mitigation with Prisma-backed services."
+tags:
+  - "Prisma"
+  - "PostgreSQL"
+  - "Performance"
+publishedAt: "2026-02-08"
+---
+
+## Common bottlenecks
+
+High-write paths often suffer from hidden lock amplification and poor index selectivity.
+
+## Practical strategies
+
+- Keep write transactions short.
+- Push heavy side effects off critical write path.
+- Use query plans as first-class observability artifacts.
+
+## Measuring success
+
+Track lock wait time, p95 latency, and throughput as a combined health signal.
