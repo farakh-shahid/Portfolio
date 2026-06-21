@@ -5,7 +5,7 @@ import { getSiteUrl } from '@/lib/seo/site-url'
 export const seoTitle = `${editorialProfile.name} — ${editorialProfile.title}`
 
 export const seoDescription =
-  'Muhammad Farrukh is a Senior Full-Stack Engineer with 5+ years building event-driven AWS systems, NestJS backends, PostgreSQL performance tuning, and React/Next.js products. Available for remote senior roles · GMT+5.'
+  'Muhammad Farrukh is a Senior Full-Stack Engineer with 7+ years building event-driven AWS systems, NestJS backends, PostgreSQL performance tuning, and React/Next.js products. Available for remote senior roles · GMT+5.'
 
 export const seoKeywords = [
   'Muhammad Farrukh',
