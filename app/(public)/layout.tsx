@@ -5,7 +5,7 @@ import { ConditionalChrome } from '@/components/layout/conditional-chrome'
 import { PageTransition } from '@/components/layout/page-transition'
 import { PublicChrome } from '@/components/layout/public-chrome'
 import { ThemeProvider } from '@/components/layout/theme-provider'
-import { personSchema } from '@/lib/seo/schema'
+import { structuredDataGraph } from '@/lib/seo/schema'
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -42,7 +42,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
         </div>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredDataGraph()) }}
         />
       </div>
     </ThemeProvider>

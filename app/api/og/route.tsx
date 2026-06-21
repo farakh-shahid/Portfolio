@@ -23,7 +23,7 @@ export async function GET() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <div style={{ fontSize: 64, fontWeight: 400, lineHeight: 1.05 }}>{editorialProfile.name}</div>
-          <div style={{ fontSize: 28, color: '#C9A227', fontStyle: 'italic' }}>Full-Stack Engineer</div>
+          <div style={{ fontSize: 28, color: '#C9A227', fontStyle: 'italic' }}>Senior Full-Stack Engineer</div>
         </div>
         <div style={{ fontSize: 18, color: '#8C8579' }}>{editorialProfile.email}</div>
       </div>
