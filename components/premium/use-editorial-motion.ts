@@ -19,6 +19,11 @@ export function useEditorialMotion(enabled: boolean) {
 
     lenis.on('scroll', ScrollTrigger.update)
 
+    const onScrollTop = () => {
+      lenis.scrollTo(0, { duration: 1.1 })
+    }
+    window.addEventListener('editorial:scroll-top', onScrollTop)
+
     const tick = (time: number) => {
       lenis.raf(time * 1000)
     }
@@ -167,25 +172,6 @@ export function useEditorialMotion(enabled: boolean) {
       )
     })
 
-    gsap.utils.toArray<HTMLElement>('.editorial-xrow .ix').forEach((ix) => {
-      const row = ix.closest('.editorial-xrow')
-      if (!row) return
-      gsap.fromTo(
-        ix,
-        { y: 18 },
-        {
-          y: -18,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: row,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-          },
-        },
-      )
-    })
-
     gsap.utils.toArray<HTMLElement>('[data-stat-to]').forEach((stat) => {
       const to = Number(stat.getAttribute('data-stat-to'))
       const valueEl = stat.querySelector('[data-stat-value]')
@@ -212,6 +198,7 @@ export function useEditorialMotion(enabled: boolean) {
     })
 
     return () => {
+      window.removeEventListener('editorial:scroll-top', onScrollTop)
       gsap.ticker.remove(tick)
       if (marqueeTick) gsap.ticker.remove(marqueeTick)
       lenis.destroy()

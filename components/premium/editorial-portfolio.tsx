@@ -13,9 +13,13 @@ import { EditorialMarquee } from '@/components/premium/editorial-marquee'
 import { EditorialStack } from '@/components/premium/editorial-stack'
 import { useEditorialMotion } from '@/components/premium/use-editorial-motion'
 import { EditorialCursor } from '@/components/premium/editorial-cursor'
+import { EditorialHeroMesh } from '@/components/premium/editorial-hero-mesh'
+import { EditorialIntro } from '@/components/premium/editorial-intro'
 import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
 import { HeroScrollIndicator } from '@/components/premium/hero-scroll-indicator'
 import { HeroResumeBuild } from '@/components/premium/hero-resume-build'
+import { EditorialBackToTop } from '@/components/premium/editorial-back-to-top'
+import { HiEye } from 'react-icons/hi2'
 
 export function EditorialPortfolio() {
   const reduceMotion = useReducedMotion()
@@ -25,6 +29,8 @@ export function EditorialPortfolio() {
 
   return (
     <div className="editorial relative min-h-screen">
+      <EditorialIntro />
+
       <div className="editorial-scroll-track" aria-hidden>
         <div id="editorial-scroll-progress" className="editorial-scroll-fill" />
       </div>
@@ -54,6 +60,7 @@ export function EditorialPortfolio() {
       </nav>
 
       <header data-hero-section className="editorial-hero">
+        <EditorialHeroMesh />
         <div className="editorial-wrap editorial-hero-inner" data-hero-parallax>
           <div data-hero-fade className="editorial-kicker">
             Senior Full-Stack Engineer — Est. 2020
@@ -75,7 +82,17 @@ export function EditorialPortfolio() {
               <ul className="editorial-hero-badges" aria-label="Core strengths">
                 <li>End-to-end ownership</li>
                 <li>On-time delivery</li>
-                <li>SOC 2 / ISO 27001-aligned</li>
+                <li className="editorial-hero-badges-resume">
+                  <a
+                    href={editorialProfile.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="editorial-hero-resume"
+                  >
+                    <HiEye aria-hidden />
+                    View Resume
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -165,7 +182,7 @@ export function EditorialPortfolio() {
         </div>
       </section>
 
-      <section id="exp" className="editorial-section relative" data-parallax-section>
+      <section id="exp" className="editorial-section editorial-section--exp relative">
         <div className="editorial-exp-track" aria-hidden>
           <div id="editorial-exp-fill" className="editorial-exp-track-fill" />
         </div>
@@ -177,26 +194,46 @@ export function EditorialPortfolio() {
             <span className="count">Architecture ownership · delivery scope · impact</span>
           </div>
           {editorialExperience.map((job) => (
-            <div key={job.index} className="editorial-xrow" data-reveal>
-              <div className="ix">{job.index}</div>
-              <div>
-                <div className="role">{job.role}</div>
-                <div className="meta">
-                  {job.company}
-                  {' · '}
-                  <span className={job.isCurrent ? 'now' : undefined}>{job.when}</span>
-                  {job.location ? ` · ${job.location}` : ''}
+            <div key={job.index} className="editorial-xrow">
+              <aside className="editorial-xcompany">
+                <div className="editorial-xbrand">
+                  <span className="editorial-xlogo">{job.company.slice(0, 1)}</span>
+                  <div>
+                    <a href={job.website} target="_blank" rel="noreferrer" className="company">
+                      {job.company}
+                    </a>
+                    <span className="visit">Visit website ↗</span>
+                  </div>
                 </div>
+                <div className="role">{job.role}</div>
+                <div className="editorial-xmeta-block">
+                  <span>{job.when}</span>
+                  <small>{job.isCurrent ? 'Current' : 'Past role'}</small>
+                </div>
+                {job.location ? <div className="editorial-xloc">◆ {job.location}</div> : null}
+              </aside>
+
+              <div className="editorial-xcontent" data-reveal>
                 <p className="desc">{job.desc}</p>
                 <div className="editorial-xtags">
                   {job.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                <div className="editorial-ximp">
-                  {job.impact.map((item) => (
-                    <span key={item}>{item}</span>
+
+                <ul className="editorial-xbullets">
+                  {job.bullets.map((item) => (
+                    <li key={item}>{item}</li>
                   ))}
+                </ul>
+
+                <div className="editorial-xprojects">
+                  <span>Notable projects built here</span>
+                  <div>
+                    {job.projects.map((project) => (
+                      <b key={project}>{project}</b>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -252,6 +289,8 @@ export function EditorialPortfolio() {
           </span>
         </div>
       </footer>
+
+      <EditorialBackToTop />
     </div>
   )
 }
