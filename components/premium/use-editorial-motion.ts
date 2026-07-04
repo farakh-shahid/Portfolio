@@ -12,7 +12,7 @@ export function useEditorialMotion(enabled: boolean) {
     if (!enabled) return
 
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)),
       smoothWheel: true,
     })
@@ -83,51 +83,90 @@ export function useEditorialMotion(enabled: boolean) {
       })
     }
 
-    // experience section — vertical gold line fills on scroll
-    const expSection = document.getElementById('exp')
-    const expFill = document.getElementById('editorial-exp-fill')
-    if (expSection && expFill) {
-      ScrollTrigger.create({
-        trigger: expSection,
-        start: 'top 55%',
-        end: 'bottom 45%',
-        scrub: 0.8,
-        onUpdate: (self) => {
-          expFill.style.transform = `scaleY(${self.progress})`
-        },
-      })
+    // experience progress line — handled in EditorialExperience
+
+    const nameWords = gsap.utils.toArray<HTMLElement>('[data-hero-name-word]')
+    const subWords = gsap.utils.toArray<HTMLElement>('[data-hero-sub-word]')
+    const heroFade = gsap.utils.toArray<HTMLElement>('[data-hero-fade]')
+
+    gsap.set(nameWords, { y: -180, opacity: 0, rotate: (i) => (i % 2 === 0 ? -7 : 6) })
+    gsap.set(subWords, { x: 64, y: -32, opacity: 0 })
+    gsap.set('[data-hero-kicker], [data-hero-tagline]', { y: 22, opacity: 0 })
+    gsap.set(heroFade, { y: 26, opacity: 0 })
+
+    const runHeroEntrance = () => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } })
+
+      tl.to('[data-hero-kicker]', { y: 0, opacity: 1, duration: 0.75 }, 0)
+        .to(
+          nameWords,
+          {
+            y: 0,
+            opacity: 1,
+            rotate: 0,
+            duration: 1.25,
+            stagger: 0.2,
+            ease: 'power4.out',
+          },
+          0.06,
+        )
+        .to('[data-hero-tagline]', { y: 0, opacity: 1, duration: 0.95 }, '-=0.55')
+        .to(
+          subWords,
+          {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            duration: 1.05,
+            stagger: 0.042,
+            ease: 'power3.out',
+          },
+          '-=0.42',
+        )
+        .to(heroFade, { y: 0, opacity: 1, duration: 0.95, stagger: 0.12 }, '-=0.5')
     }
 
-    gsap.from('[data-hero-line] > span', {
-      yPercent: 110,
-      duration: 1.15,
-      ease: 'power4.out',
-      stagger: 0.12,
-      delay: 0.1,
-    })
-
-    gsap.from('[data-hero-fade]', {
-      y: 26,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      stagger: 0.15,
-      delay: 0.55,
-    })
+    window.addEventListener('editorial:intro-complete', runHeroEntrance, { once: true })
 
     const hero = document.querySelector('[data-hero-section]')
     if (hero) {
       gsap.to('[data-hero-parallax]', {
-        y: -120,
+        y: -90,
+        scale: 0.93,
+        opacity: 0.35,
         ease: 'none',
         scrollTrigger: {
           trigger: hero,
           start: 'top top',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1.1,
+        },
+      })
+
+      gsap.to(hero, {
+        opacity: 0.55,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
         },
       })
     }
+
+    gsap.utils.toArray<HTMLElement>('[data-section-entry]').forEach((section) => {
+      gsap.from(section, {
+        y: 56,
+        opacity: 0,
+        duration: 1.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 91%',
+        },
+      })
+    })
 
     const track = document.getElementById('editorial-marq')
     let mx = 0
@@ -144,32 +183,15 @@ export function useEditorialMotion(enabled: boolean) {
 
     gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
       gsap.from(el, {
-        y: 40,
+        y: 32,
         opacity: 0,
-        duration: 0.95,
+        duration: 0.9,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 87%',
+          start: 'top 88%',
         },
       })
-    })
-
-    gsap.utils.toArray<HTMLElement>('[data-parallax-section]').forEach((section) => {
-      gsap.fromTo(
-        section,
-        { y: 40 },
-        {
-          y: -40,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: 1.5,
-          },
-        },
-      )
     })
 
     gsap.utils.toArray<HTMLElement>('[data-stat-to]').forEach((stat) => {
@@ -199,6 +221,7 @@ export function useEditorialMotion(enabled: boolean) {
 
     return () => {
       window.removeEventListener('editorial:scroll-top', onScrollTop)
+      window.removeEventListener('editorial:intro-complete', runHeroEntrance)
       gsap.ticker.remove(tick)
       if (marqueeTick) gsap.ticker.remove(marqueeTick)
       lenis.destroy()

@@ -23,14 +23,16 @@ export const editorialExperience = [
     when: 'Dec 2024 — Present',
     location: 'California, US · Remote',
     isCurrent: true,
-    desc: 'Owned cloud-connected product delivery from discovery to production — IoT workflows, backend performance, and platform reliability.',
+    desc: 'Owned end-to-end delivery for a cloud-connected solar platform — IoT telemetry, backend performance, and production reliability across web and field devices.',
+    leadership:
+      'Technical direction · architecture reviews · mentored engineers on IoT and frontend patterns · owned platform reliability standards.',
     tags: ['React', 'GraphQL', 'TypeScript', 'AWS IoT Core', 'MQTT', 'AWS Lambda', 'SQS/SNS', 'PostgreSQL', 'Redis'],
     impact: ['30% → 90% app performance', '60%+ DB response gain', 'Realtime device connectivity'],
     bullets: [
-      'Configured AWS IoT Core communication for solar-site devices, improving device interaction, telemetry flow and data collection reliability.',
-      'Improved application performance through Redis caching, query optimization, RTK Query, React Query and Redux Saga state workflows.',
-      'Implemented AWS Cognito authentication, MFA, password policies and Secrets Manager handling for secure web and mobile access.',
-      'Worked with MQTT commands for network-controller site management, improving synchronization between devices and platform services.',
+      'Defined the AWS IoT Core architecture for solar-site devices — telemetry ingestion, MQTT command flows, and reliable field-to-cloud synchronization.',
+      'Led a performance initiative that took application responsiveness from ~30% to ~90% through Redis caching, query tuning, and RTK Query / Redux Saga state design.',
+      'Introduced Cognito-based auth with MFA, password policies, and Secrets Manager — setting the security baseline for web and mobile access.',
+      'Drove backend reliability improvements that cut database response times by 60%+ while keeping latency-sensitive device paths off the critical sync route.',
     ],
     projects: ['TerraSmart PeakYield', 'AWS IoT workflows', 'Device management platform'],
   },
@@ -42,14 +44,16 @@ export const editorialExperience = [
     when: 'Jul 2024 — Nov 2024',
     location: 'Greece · Remote',
     isCurrent: false,
-    desc: 'Led backend platform work in NestJS and TypeScript — service design, REST APIs, and microservice-oriented architecture with maintainability and security as core constraints.',
+    desc: 'Led backend platform work for a high-volume ferry booking product — service boundaries, event-driven messaging, and secure payments at production scale.',
+    leadership:
+      'Owned service architecture · led migration strategy · code reviews · standardized NestJS patterns across booking and payment domains.',
     tags: ['NestJS', 'TypeScript', 'PostgreSQL', 'TypeORM', 'RabbitMQ', 'Stripe', 'JWT', 'Tailwind CSS'],
     impact: ['Microservices design', 'Auth + authorization', 'Scalable backend services'],
     bullets: [
-      'Revamped ferry-booking workflows by migrating legacy PHP services into NestJS, TypeORM and PostgreSQL.',
-      'Implemented RabbitMQ for inter-service communication, enabling reliable message handling across booking and payment services.',
-      'Integrated Stripe payment flows and JWT-based security protocols, reducing authentication and authorization risk.',
-      'Built responsive Next.js and Tailwind interfaces while using TypeScript decorators for validation, logging and authorization checks.',
+      'Defined the backend architecture for a multi-service booking platform supporting high daily transaction volume — replacing legacy PHP with NestJS, TypeORM, and PostgreSQL.',
+      'Introduced RabbitMQ for inter-service communication, establishing reliable async workflows between booking, inventory, and payment services.',
+      'Owned Stripe payment integration and JWT-based authorization — reducing auth risk and standardizing how services enforce access control.',
+      'Drove API and validation standards with TypeScript decorators for logging, authorization checks, and consistent service contracts.',
     ],
     projects: ['Ferry booking system', 'Payment gateway integration', 'Booking microservices'],
   },
@@ -61,14 +65,16 @@ export const editorialExperience = [
     when: 'May 2022 — Jun 2024',
     location: 'San Francisco, US',
     isCurrent: false,
-    desc: 'Delivered frontend and backend features in a large engineering org, with strong emphasis on design execution and cross-team collaboration.',
+    desc: 'Owned feature delivery across frontend and backend in a 40+ engineer org — from service design to polished UI in a high-traffic e-commerce environment.',
+    leadership:
+      'Cross-team collaboration · architecture discussions · code reviews · mentored juniors on React patterns and API design.',
     tags: ['React', 'Vue.js', 'Node.js', 'MongoDB', 'Redis', 'AWS S3', 'Cloudinary', 'API Gateway', 'Material UI'],
     impact: ['40+ engineer collaboration', 'Design-to-code ownership', 'Consistent UI delivery'],
     bullets: [
-      'Designed and deployed microservice architecture for a high-traffic e-commerce platform using Node.js.',
-      'Built dynamic React and Vue interfaces, improving interaction speed and reducing bounce across product workflows.',
-      'Integrated AWS S3 and Cloudinary for scalable file handling and large media-processing use cases.',
-      'Improved system performance with Redis caching, query optimization, TypeScript practices and multi-tenant infrastructure.',
+      'Designed and deployed the microservice architecture for a high-traffic e-commerce platform — defining service boundaries, Node.js APIs, and multi-tenant data isolation.',
+      'Led React and Vue delivery for core product workflows, improving interaction speed and reducing bounce through performance-focused UI execution.',
+      'Introduced Redis caching and query optimization standards that improved response times across tenant-heavy read paths.',
+      'Owned scalable media handling with AWS S3 and Cloudinary — defining how large assets moved through the platform without blocking user flows.',
     ],
     projects: ['E-commerce platform', 'Multi-tenant infrastructure', 'Design system delivery'],
   },
@@ -80,14 +86,16 @@ export const editorialExperience = [
     when: 'Feb 2020 — May 2022',
     location: 'Vancouver, CA · Remote',
     isCurrent: false,
-    desc: 'Built backend and frontend for graph-database tooling in the Apache AGE ecosystem — data-visualization products for exploring complex connected datasets.',
+    desc: 'Owned full-stack delivery for graph-database products in the Apache AGE ecosystem — APIs, visualization UX, and the public platform surface.',
+    leadership:
+      'End-to-end ownership · defined API conventions · led frontend architecture for graph tooling · mentored on state-management patterns.',
     tags: ['Next.js', 'React', 'Node.js', 'Express.js', 'GraphQL', 'REST APIs', 'Redux', 'React Query', 'Zustand'],
     impact: ['Graph data visualization', 'Full-stack ownership', 'Scalable API delivery'],
     bullets: [
-      'Led development of Bitnine’s official website with Next.js, improving page-load performance and overall UX.',
-      'Developed full-stack React, Node.js and Express applications with optimized APIs and reusable component systems.',
-      'Spearheaded REST and GraphQL API work, improving data transfer and backend performance for graph-oriented tooling.',
-      'Implemented state-management patterns with Redux, React Query and Zustand to improve maintainability across products.',
+      'Led development of Bitnine’s official Next.js platform — owning performance, UX, and the technical direction of the public product surface.',
+      'Defined REST and GraphQL API strategy for graph-oriented tooling, improving data transfer efficiency and backend maintainability.',
+      'Introduced reusable component and state-management standards (Redux, React Query, Zustand) that reduced inconsistency across multiple product lines.',
+      'Drove full-stack feature ownership across React, Node.js, and Express — from schema design through production-ready visualization experiences.',
     ],
     projects: ['Bitnine website', 'Apache AGE tooling', 'Graph data applications'],
   },
@@ -138,6 +146,110 @@ export const editorialProjects = [
   },
 ] as const
 
+/** Curated work gallery — sample dashboard / product UI imagery */
+export const editorialWorkGallery = [
+  {
+    num: '01',
+    name: 'Terrasmart',
+    category: 'IoT · Cloud Platform',
+    description:
+      'Realtime solar operations — device telemetry, MQTT command flows and serverless processing at scale.',
+    stack: 'React · GraphQL · AWS IoT',
+    image: '/images/gallery/terrasmart.png',
+    url: 'https://www.terrasmart.com/',
+  },
+  {
+    num: '02',
+    name: 'Maple HR',
+    category: 'HR · Internal Tools',
+    description:
+      'Operations hub with clean data layers — admin workflows trimmed and APIs built for long-term maintainability.',
+    stack: 'React · RTK Query · Node',
+    image: '/images/gallery/maple-hr.png',
+    url: 'https://maplehr.io/',
+  },
+  {
+    num: '03',
+    name: 'Upmail',
+    category: 'Data · Reporting',
+    description:
+      'Flexible multi-table builder for teams who need reporting structures that evolve without redeploys.',
+    stack: 'TypeScript · React · Express',
+    image: '/images/gallery/upmail.png',
+    url: 'https://www.upmailsolutions.com/',
+  },
+  {
+    num: '04',
+    name: 'Galaxy EHR',
+    category: 'Health · Clinical UX',
+    description:
+      'HIPAA-aligned behavioral-health platform — scheduling, billing and patient flows designed for clarity under pressure.',
+    stack: 'Next.js · TypeScript · PostgreSQL',
+    image: '/images/gallery/galaxy-ehr.png',
+    url: 'https://galaxyehr.com/',
+  },
+  {
+    num: '05',
+    name: 'Futurenostics',
+    category: 'AI · Multi-client Delivery',
+    description:
+      'Lead engineer across cloud and ML engagements — guiding teams from concept through production handoff.',
+    stack: 'Next.js · AWS · Kubernetes',
+    image: '/images/gallery/futurenostics.png',
+    url: 'https://www.futurenostics.com/',
+  },
+  {
+    num: '06',
+    name: 'Greeka',
+    category: 'Travel · Ferry Booking',
+    description:
+      'NestJS microservices migration — booking flows, RabbitMQ messaging and Stripe payments at ferry scale.',
+    stack: 'NestJS · PostgreSQL · RabbitMQ',
+    image: '/images/gallery/greeka.png',
+    url: 'https://www.greeka.com/',
+  },
+  {
+    num: '07',
+    name: 'Bitnine',
+    category: 'Graph · Data Platform',
+    description:
+      'Full-stack graph tooling — Next.js surfaces, GraphQL APIs and visualization for enterprise data teams.',
+    stack: 'Next.js · GraphQL · Node',
+    image: '/images/gallery/bitnine.png',
+    url: 'https://bitnine.net/',
+  },
+  {
+    num: '08',
+    name: 'Devsinc',
+    category: 'E-commerce · Scale',
+    description:
+      'High-traffic storefront architecture — microservices, Redis caching and multi-tenant infra across a 40+ engineer org.',
+    stack: 'React · Node · Redis · AWS',
+    image: '/images/gallery/devsinc.png',
+    url: 'https://www.devsinc.com/',
+  },
+  {
+    num: '09',
+    name: 'PeakYield',
+    category: 'Solar · Device Ops',
+    description:
+      'AWS IoT Core telemetry and MQTT command layers — realtime device sync for field solar operations.',
+    stack: 'AWS IoT · Lambda · MQTT',
+    image: '/images/gallery/peakyield.png',
+    url: 'https://www.terrasmart.com/',
+  },
+  {
+    num: '10',
+    name: 'Cloud Delivery',
+    category: 'AWS · Serverless',
+    description:
+      'Lambda, Cognito, SQS/SNS pipelines — secure auth, event-driven workflows and boringly reliable deploys.',
+    stack: 'AWS · Docker · CI/CD',
+    image: '/images/gallery/cloud-platform.png',
+    url: 'https://www.futurenostics.com/',
+  },
+] as const
+
 export const marqueeSkills = [
   { text: 'React' },
   { text: 'Next.js' },
@@ -160,6 +272,8 @@ export const editorialStats = [
   { value: 30, suffix: '%', label: 'Avg performance lift' },
   { value: 4, suffix: '', label: 'Countries · teams' },
   { value: 12, suffix: '+', label: 'Systems in production' },
+  { value: 90, suffix: '%', label: 'Peak perf · prod scale' },
+  { value: 40, suffix: '+', label: 'Engineers · cross-squad' },
 ] as const
 
 export const editorialCapabilities = [

@@ -20,6 +20,7 @@ export function EditorialIntro() {
     const timer = window.setTimeout(() => {
       setShow(false)
       document.body.style.overflow = ''
+      window.dispatchEvent(new CustomEvent('editorial:intro-complete'))
     }, total)
 
     return () => {
