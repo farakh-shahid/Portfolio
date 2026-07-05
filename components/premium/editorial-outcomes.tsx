@@ -183,9 +183,6 @@ export function EditorialOutcomes() {
                 className="editorial-case editorial-case--bordered"
                 data-outcome-card
               >
-                <span className="editorial-outcomes-index" aria-hidden>
-                  {study.id}
-                </span>
                 <div className="editorial-case-shell">
                   <div className="editorial-case-head">
                     <span className="cn">{study.id}</span>

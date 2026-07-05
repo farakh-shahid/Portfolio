@@ -9,7 +9,8 @@ import { editorialProcess } from '@/data/editorial-portfolio'
 gsap.registerPlugin(ScrollTrigger)
 
 const LINE_ONE = ['Four', 'phases', 'today.']
-const LINE_TWO = ['Clarity', 'every', 'project.']
+const LINE_TWO = ['Clear', 'scope.', 'Every', 'project.']
+const LEAD_WORDS = ['Four', 'steps', 'from', 'brief', 'to', 'ship.']
 
 const CARD_THEMES = [
   { bg: '#7ee8b0', text: '#0a0a0a', panel: 'rgba(10, 10, 10, 0.08)' },
@@ -19,7 +20,8 @@ const CARD_THEMES = [
 ] as const
 const CARD_ROTATIONS = [-7, 6, -4, 5] as const
 const CARD_X = [-28, 34, -18, 22] as const
-const SCROLL_PER_CARD_VH = 145
+const SCROLL_PER_CARD_VH = 112
+const CARD_STEP = 0.21
 
 const SCATTER_TARGETS = [
   { x: -290, y: -210, r: -34 },
@@ -65,6 +67,9 @@ export function EditorialProcess() {
         const allWords = [...words1, ...words2]
         const cards = gsap.utils.toArray<HTMLElement>('[data-process-step]')
         const scatterGroups = gsap.utils.toArray<HTMLElement>('[data-scatter-group]')
+        const leadWords = gsap.utils.toArray<HTMLElement>('[data-process-lead-word]')
+
+        gsap.set(leadWords, { y: 36, opacity: 0 })
 
         const heroTl = gsap.timeline({
           scrollTrigger: {
@@ -85,8 +90,8 @@ export function EditorialProcess() {
           })
         }
 
-        spreadWords(words1, 72, 1)
-        spreadWords(words2, 64, -1)
+        spreadWords(words1, 52, 1)
+        spreadWords(words2, 48, -1)
 
         if (allWords.length) {
           heroTl.to(allWords, { opacity: 1, ease: 'none', duration: 0.35 }, 0)
@@ -132,9 +137,21 @@ export function EditorialProcess() {
           },
         })
 
-        const segment = 1 / cards.length
-        const scatterDur = segment * 0.28
-        const enterDur = segment * 0.14
+        const segment = CARD_STEP
+        const scatterDur = segment * 0.16
+        const enterDur = segment * 0.13
+
+        cardsTl.to(
+          leadWords,
+          {
+            y: 0,
+            opacity: 1,
+            duration: segment * 0.55,
+            stagger: 0.045,
+            ease: 'power3.out',
+          },
+          0,
+        )
 
         cards.forEach((card, i) => {
           const t0 = i * segment
@@ -218,6 +235,18 @@ export function EditorialProcess() {
           },
         })
 
+        gsap.from('[data-process-lead-word]', {
+          y: 24,
+          opacity: 0,
+          duration: 0.75,
+          stagger: 0.06,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: cardsPin,
+            start: 'top 85%',
+          },
+        })
+
         gsap.utils.toArray<HTMLElement>('[data-process-step]').forEach((step, i) => {
           gsap.from(step, {
             y: 48,
@@ -272,7 +301,13 @@ export function EditorialProcess() {
       </div>
 
       <div ref={cardsPinRef} className="editorial-process-cards-pin">
-        <p className="editorial-process-sub">A typed timeline, every time</p>
+        <p className="editorial-process-lead" aria-label="Four steps from brief to ship">
+          {LEAD_WORDS.map((word, i) => (
+            <span key={`${word}-${i}`} className="editorial-process-lead-word" data-process-lead-word>
+              {word}
+            </span>
+          ))}
+        </p>
 
         <div className="editorial-process-scatter" aria-hidden>
           {editorialProcess.map((step, index) => (

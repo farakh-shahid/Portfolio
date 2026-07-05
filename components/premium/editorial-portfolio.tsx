@@ -7,6 +7,7 @@ import {
 import { EditorialBuild } from '@/components/premium/editorial-build'
 import { EditorialOutcomes } from '@/components/premium/editorial-outcomes'
 import { EditorialMarquee } from '@/components/premium/editorial-marquee'
+import { EditorialStory } from '@/components/premium/editorial-story'
 import { EditorialNumbers } from '@/components/premium/editorial-numbers'
 import { EditorialExperience } from '@/components/premium/editorial-experience'
 import { EditorialProcess } from '@/components/premium/editorial-process'
@@ -19,6 +20,7 @@ import { EditorialIntro } from '@/components/premium/editorial-intro'
 import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
 import { HeroScrollIndicator } from '@/components/premium/hero-scroll-indicator'
 import { HeroResumeBuild } from '@/components/premium/hero-resume-build'
+import { EditorialContact } from '@/components/premium/editorial-contact'
 import { EditorialBackToTop } from '@/components/premium/editorial-back-to-top'
 import { HiEye } from 'react-icons/hi2'
 
@@ -129,20 +131,7 @@ export function EditorialPortfolio() {
 
       <EditorialMarquee />
 
-      <section id="story" className="editorial-section editorial-section--story" data-section-entry>
-        <div className="editorial-wrap">
-          <span className="editorial-eyebrow" data-reveal>
-            The work
-          </span>
-          <p className="editorial-lead" data-reveal>
-            Six years turning <em>tangled requirements</em> into systems that stay quick under pressure — across IoT,
-            fintech, travel and e-commerce.{' '}
-            <span className="muted">
-              From the React on the screen to the queues, caches and Lambdas underneath it.
-            </span>
-          </p>
-        </div>
-      </section>
+      <EditorialStory />
 
       <EditorialNumbers />
 
@@ -158,32 +147,7 @@ export function EditorialPortfolio() {
 
       <EditorialStack />
 
-      <section id="contact" className="editorial-section" data-section-entry>
-        <div className="editorial-wrap">
-          <div className="editorial-cwrap" data-reveal>
-            <span className="editorial-eyebrow editorial-eyebrow-center">Let&apos;s talk</span>
-            <div className="big">
-              Let&apos;s build something
-              <br />
-              <em>at scale.</em>
-            </div>
-            <p className="sub">{editorialProfile.contactSub}</p>
-            <a href={`mailto:${editorialProfile.email}`} className="mail">
-              {editorialProfile.email}
-            </a>
-            <div className="editorial-cmeta">
-              <a href={`tel:${editorialProfile.phone}`}>{editorialProfile.phoneDisplay}</a>
-              <a href={editorialProfile.github} target="_blank" rel="noopener noreferrer">
-                GitHub ↗
-              </a>
-              <a href={editorialProfile.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn ↗
-              </a>
-              <span>{editorialProfile.timezone}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EditorialContact />
 
       <footer className="editorial-footer relative z-[1]">
         <div className="editorial-footin">
