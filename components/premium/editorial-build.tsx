@@ -8,18 +8,8 @@ import { editorialCapabilities } from '@/data/editorial-portfolio'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SCATTER = [
-  { x: -120, y: -40, r: -18 },
-  { x: 110, y: -32, r: 14 },
-  { x: -90, y: 36, r: -12 },
-  { x: 100, y: 28, r: 16 },
-  { x: -70, y: -50, r: 10 },
-  { x: 85, y: 44, r: -14 },
-] as const
-
-function scatter(i: number) {
-  return SCATTER[i % SCATTER.length]
-}
+const SCROLL_VH = 320
+const CARD_SEGMENT = 0.3
 
 export function EditorialBuild() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -34,132 +24,103 @@ export function EditorialBuild() {
 
       mm.add('(min-width: 768px)', () => {
         const words = gsap.utils.toArray<HTMLElement>('[data-build-word]')
+        const cards = gsap.utils.toArray<HTMLElement>('[data-build-row]')
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            pin: true,
+            scrub: 0.85,
+            start: 'top top',
+            end: `+=${SCROLL_VH}%`,
+            invalidateOnRefresh: true,
+            anticipatePin: 1,
+          },
+        })
+
         if (words.length) {
           const mid = (words.length - 1) / 2
-          const spreadTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: section,
-              start: 'top 72%',
-              end: 'top 38%',
-              scrub: 0.65,
-            },
-          })
           words.forEach((word, i) => {
-            spreadTl.to(word, { x: (i - mid) * 58, opacity: 1, ease: 'none' }, 0)
+            tl.fromTo(
+              word,
+              { opacity: 0.35, y: 0 },
+              { opacity: 1, y: (i - mid) * 36, ease: 'none', duration: 0.16 },
+              0,
+            )
           })
         }
 
-        gsap.from('[data-build-eyebrow]', {
-          y: 22,
-          opacity: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 78%',
-          },
-        })
+        tl.from(
+          '[data-build-eyebrow]',
+          { y: 14, opacity: 0, duration: 0.12, ease: 'power2.out' },
+          0,
+        )
 
-        gsap.from('[data-build-side]', {
-          x: -48,
-          opacity: 0,
-          duration: 0.9,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 76%',
-          },
-        })
+        tl.from(
+          '[data-build-side]',
+          { y: 16, opacity: 0, duration: 0.12, ease: 'power2.out' },
+          0.04,
+        )
 
-        gsap.utils.toArray<HTMLElement>('[data-build-row]').forEach((row, rowIndex) => {
-          const titleWords = row.querySelectorAll('[data-build-title-word]')
-          const body = row.querySelector('[data-build-body]')
-          const desc = row.querySelector('[data-build-desc]')
-          const tags = row.querySelectorAll('[data-build-tag]')
-          const ghost = row.querySelector('[data-build-ghost]')
-          const fromLeft = rowIndex % 2 === 0
-
-          if (titleWords.length) {
-            gsap.from(titleWords, {
-              x: (i) => scatter(i).x * 0.22,
-              y: (i) => scatter(i).y * 0.18,
-              rotate: (i) => scatter(i).r * 0.55,
-              opacity: 0,
-              duration: 0.95,
-              stagger: 0.07,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: row,
-                start: 'top 84%',
-              },
-            })
-          }
-
-          if (body) {
-            gsap.from(body, {
-              x: fromLeft ? 72 : -72,
-              opacity: 0,
-              duration: 1,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: row,
-                start: 'top 82%',
-              },
-            })
-          }
-
-          if (desc) {
-            gsap.from(desc, {
-              y: 24,
-              opacity: 0,
-              duration: 0.85,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: row,
-                start: 'top 80%',
-              },
-            })
-          }
-
-          if (tags.length) {
-            gsap.from(tags, {
-              y: 16,
-              opacity: 0,
-              scale: 0.92,
-              rotate: (i) => (i % 2 === 0 ? -4 : 4),
-              duration: 0.6,
-              stagger: 0.05,
-              ease: 'back.out(1.6)',
-              scrollTrigger: {
-                trigger: row,
-                start: 'top 78%',
-              },
-            })
-          }
-
-          if (ghost) {
-            gsap.fromTo(
-              ghost,
-              { scale: 0.92, opacity: 0 },
-              {
-                scale: 1,
-                opacity: 1,
-                duration: 1.1,
-                ease: 'power2.out',
-                scrollTrigger: {
-                  trigger: row,
-                  start: 'top 85%',
-                },
-              },
-            )
-          }
-
-          ScrollTrigger.create({
-            trigger: row,
-            start: 'top 52%',
-            end: 'bottom 48%',
-            onToggle: (self) => row.classList.toggle('is-active', self.isActive),
+        // Deck preview: front card flat; rest fan out below (fill empty space) as tilted cards
+        cards.forEach((card, i) => {
+          const isFront = i === 0
+          const depth = i
+          gsap.set(card, {
+            top: 0,
+            left: 0,
+            y: isFront ? 0 : () => Math.min(window.innerHeight * (0.14 + depth * 0.11), 110 + depth * 72),
+            z: isFront ? 0 : -80 - depth * 55,
+            rotateX: isFront ? 0 : 26 + depth * 5,
+            scale: isFront ? 1 : 0.94 - depth * 0.02,
+            autoAlpha: isFront ? 1 : Math.max(0.42, 0.78 - depth * 0.1),
+            zIndex: isFront ? cards.length + 5 : cards.length - i,
+            transformPerspective: 1600,
+            transformOrigin: '50% 0%',
+            force3D: true,
           })
+          card.classList.toggle('is-active', isFront)
+        })
+
+        cards.forEach((card, i) => {
+          if (i === 0) return
+
+          const t = 0.18 + (i - 1) * CARD_SEGMENT
+          const prev = cards[i - 1]
+
+          // Previous front card settles under the incoming cover
+          tl.to(
+            prev,
+            {
+              y: -18,
+              z: -100,
+              rotateX: 8,
+              scale: 0.94,
+              opacity: 0.7,
+              zIndex: i,
+              duration: 0.3,
+              ease: 'power2.inOut',
+              onStart: () => prev.classList.remove('is-active'),
+            },
+            t,
+          )
+
+          // Peeking tilted card rises from below, straightens, and covers
+          tl.to(
+            card,
+            {
+              y: 0,
+              z: 0,
+              rotateX: 0,
+              scale: 1,
+              autoAlpha: 1,
+              zIndex: cards.length + 5 + i,
+              duration: 0.4,
+              ease: 'power2.out',
+              onStart: () => card.classList.add('is-active'),
+            },
+            t,
+          )
         })
       })
 
@@ -175,9 +136,9 @@ export function EditorialBuild() {
           },
         })
 
-        gsap.utils.toArray<HTMLElement>('[data-build-row]').forEach((row) => {
+        gsap.utils.toArray<HTMLElement>('[data-build-row]').forEach((row, i) => {
           gsap.from(row, {
-            y: 40,
+            y: 48,
             opacity: 0,
             duration: 0.85,
             ease: 'power3.out',
@@ -185,6 +146,7 @@ export function EditorialBuild() {
               trigger: row,
               start: 'top 92%',
             },
+            delay: i * 0.06,
           })
         })
       })
@@ -197,7 +159,7 @@ export function EditorialBuild() {
     <section
       id="build"
       ref={sectionRef}
-      className={`editorial-section editorial-section--build${reduceMotion ? ' editorial-build--static' : ''}`}
+      className={`editorial-section editorial-section--build${reduceMotion ? ' editorial-build--static' : ' editorial-build--flow'}`}
     >
       <div className="editorial-wrap editorial-build-wrap">
         <header className="editorial-build-head" data-build-head>
@@ -220,35 +182,42 @@ export function EditorialBuild() {
           </span>
         </header>
 
-        <div className="editorial-build-list">
-          {editorialCapabilities.map((cap) => (
-            <article key={cap.id} className="editorial-build-row" data-build-row>
-              <span className="editorial-build-ghost" data-build-ghost aria-hidden>
-                {cap.id}
-              </span>
-              <div className="editorial-build-main">
-                <h3 className="editorial-build-row-title">
-                  {cap.title.split(' ').map((word) => (
-                    <span key={word} className="editorial-build-row-title-word" data-build-title-word>
-                      {word}
-                    </span>
-                  ))}
-                </h3>
-              </div>
-              <div className="editorial-build-body" data-build-body>
-                <p className="editorial-build-desc" data-build-desc>
-                  {cap.description}
-                </p>
-                <div className="editorial-build-tags">
-                  {cap.tags.split(' · ').map((tag) => (
-                    <span key={tag} className="editorial-build-tag" data-build-tag>
-                      {tag}
-                    </span>
-                  ))}
+        <div className="editorial-build-viewport">
+          <div className="editorial-build-stage" data-build-stack>
+            {editorialCapabilities.map((cap, index) => (
+              <article
+                key={cap.id}
+                className={`editorial-build-row${index === 0 && !reduceMotion ? ' is-active' : ''}`}
+                data-build-row
+              >
+                <span className="editorial-build-glow" aria-hidden />
+                <span className="editorial-build-ghost" data-build-ghost aria-hidden>
+                  {cap.id}
+                </span>
+                <div className="editorial-build-main">
+                  <h3 className="editorial-build-row-title">
+                    {cap.title.split(' ').map((word) => (
+                      <span key={word} className="editorial-build-row-title-word" data-build-title-word>
+                        {word}
+                      </span>
+                    ))}
+                  </h3>
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="editorial-build-body" data-build-body>
+                  <p className="editorial-build-desc" data-build-desc>
+                    {cap.description}
+                  </p>
+                  <div className="editorial-build-tags">
+                    {cap.tags.split(' · ').map((tag) => (
+                      <span key={tag} className="editorial-build-tag" data-build-tag>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -202,13 +202,14 @@
   flex: 1;
   min-height: 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .editorial-exp-stage {
   position: relative;
   width: 100%;
   min-height: clamp(520px, 62vh, 680px);
+  perspective: 1400px;
 }
 
 .editorial-exp--flow .editorial-exp-card {
@@ -218,6 +219,7 @@
   width: 100%;
   min-height: clamp(500px, 60vh, 660px);
   will-change: transform, opacity;
+  transform-origin: 50% 50%;
 }
 
 .editorial-exp-card {
@@ -2561,19 +2563,36 @@
   display: block;
 }
 
-/* What I build — GSAP scroll reveals */
+/* What I build — pinned 3D stack (Experience-style, cards cover in place) */
 .editorial-section--build {
   position: relative;
-  overflow: visible;
-  padding: 100px 0 110px;
+  overflow: hidden;
+}
+
+.editorial-section--build.editorial-build--flow {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.editorial-section--build.editorial-build--static {
+  padding: 100px 0 140px;
 }
 
 .editorial-build-wrap {
   position: relative;
 }
 
+.editorial-build--flow .editorial-build-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: calc(88px + clamp(2.5rem, 6vh, 4rem)) 32px clamp(2rem, 4vh, 3rem);
+}
+
 .editorial-build-head {
-  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.5rem);
+  flex-shrink: 0;
 }
 
 .editorial-build-title {
@@ -2607,8 +2626,28 @@
   color: var(--muted);
 }
 
-.editorial-build-list {
-  border-top: 1px solid var(--line);
+.editorial-build-viewport {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.editorial-build-stage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(520px, 70vh, 720px);
+  perspective: 1600px;
+  overflow: visible;
+}
+
+.editorial-build--flow .editorial-build-row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .editorial-build-row {
@@ -2617,17 +2656,71 @@
   grid-template-columns: minmax(200px, 0.9fr) minmax(0, 1.25fr);
   gap: clamp(24px, 4vw, 44px);
   align-items: start;
-  padding: clamp(38px, 5vw, 54px) clamp(72px, 10vw, 100px) clamp(42px, 5vw, 58px) 0;
-  border-bottom: 1px solid var(--line);
+  padding: clamp(36px, 4.5vw, 48px) clamp(64px, 9vw, 92px) clamp(40px, 4.5vw, 52px)
+    clamp(22px, 2.5vw, 30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
   overflow: hidden;
-  transition:
-    border-color 0.35s ease,
-    background 0.35s ease;
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(108, 99, 255, 0.14), transparent 48%),
+    linear-gradient(155deg, rgba(24, 23, 32, 0.98) 0%, rgba(11, 10, 14, 0.99) 100%);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: border-color 0.35s ease;
+}
+
+.editorial-build-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent) 20%,
+    var(--accent-soft) 50%,
+    var(--accent) 80%,
+    transparent
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.editorial-build-glow {
+  position: absolute;
+  inset: auto -20% -40% -20%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(108, 99, 255, 0.16), transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .editorial-build-row.is-active {
-  border-color: rgba(108, 99, 255, 0.3);
-  background: linear-gradient(90deg, rgba(108, 99, 255, 0.06), transparent 62%);
+  border-color: rgba(108, 99, 255, 0.45);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(108, 99, 255, 0.14),
+    0 0 0 1px rgba(108, 99, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.editorial-build-row.is-active::before {
+  opacity: 1;
+  left: 0;
+  right: 0;
+}
+
+.editorial-build-row.is-active .editorial-build-glow {
+  opacity: 1;
 }
 
 .editorial-build-ghost {
@@ -2701,25 +2794,61 @@
   background: rgba(108, 99, 255, 0.06);
 }
 
+.editorial-build--static .editorial-build-stage {
+  display: grid;
+  gap: 24px;
+  min-height: auto;
+  perspective: none;
+}
+
+.editorial-build--static .editorial-build-row {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
 .editorial-build--static .editorial-build-title-word {
   opacity: 1;
   transform: none !important;
 }
 
 @media (max-width: 767px) {
-  .editorial-section--build {
+  .editorial-section--build.editorial-build--flow {
+    min-height: auto;
     padding: 90px 0 100px;
+  }
+
+  .editorial-build--flow .editorial-build-wrap {
+    min-height: auto;
+    padding: 0 32px;
+  }
+
+  .editorial-build--flow .editorial-build-stage {
+    min-height: auto;
+    display: grid;
+    gap: 18px;
+    perspective: none;
+  }
+
+  .editorial-build--flow .editorial-build-row {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 
   .editorial-build-row {
     grid-template-columns: 1fr;
     gap: 14px;
-    padding: 32px 56px 32px 0;
+    padding: 28px 56px 28px 18px;
   }
 
   .editorial-build-ghost {
     top: 12px;
-    right: 0;
+    right: 12px;
     font-size: clamp(3.5rem, 18vw, 5rem);
   }
 

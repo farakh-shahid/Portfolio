@@ -112,56 +112,50 @@ export function EditorialExperience() {
           0.04,
         )
 
-        cards.forEach((card) => {
+        cards.forEach((card, i) => {
           gsap.set(card, {
             top: 0,
             left: 0,
-            y: vh() * 0.52,
+            y: vh() * 0.55,
             autoAlpha: 0,
+            scale: 1,
+            zIndex: i + 1,
+            transformOrigin: '50% 50%',
+            force3D: true,
           })
         })
 
         cards.forEach((card, i) => {
           const t = i * CARD_SEGMENT
 
+          // Previous card settles under the incoming one (covered, not removed)
           if (i > 0) {
             tl.to(
               cards[i - 1],
               {
-                y: () => -vh() * 0.48,
-                autoAlpha: 0,
-                duration: 0.18,
-                ease: 'power2.in',
+                scale: 0.94,
+                y: -18,
+                opacity: 0.82,
+                duration: 0.22,
+                ease: 'power2.inOut',
               },
               t,
             )
           }
 
+          // Current card rises from below and covers the stack
           tl.to(
             card,
             {
               y: 0,
               autoAlpha: 1,
-              duration: 0.22,
+              scale: 1,
+              duration: 0.28,
               ease: 'power2.out',
             },
             t,
           )
         })
-
-        const last = cards[cards.length - 1]
-        if (last) {
-          tl.to(
-            last,
-            {
-              y: () => -vh() * 0.48,
-              autoAlpha: 0,
-              duration: 0.18,
-              ease: 'power2.in',
-            },
-            cards.length * CARD_SEGMENT + 0.08,
-          )
-        }
       })
 
       mm.add('(max-width: 1023px)', () => {
