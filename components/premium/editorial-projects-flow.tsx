@@ -181,16 +181,11 @@ export function EditorialProjectsFlow() {
         <div className="editorial-gallery-stage">
           {editorialWorkGallery.map((project, index) => {
             const slot = GALLERY_SLOTS[index % GALLERY_SLOTS.length]
-            return (
-              <a
-                key={project.num}
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`editorial-gallery-card editorial-gallery-card--${slot.variant}`}
-                data-gallery-card
-                style={{ zIndex: slot.z }}
-              >
+            const className = `editorial-gallery-card editorial-gallery-card--${slot.variant}${
+              project.url ? '' : ' editorial-gallery-card--sample'
+            }`
+            const cardBody = (
+              <>
                 <div className="editorial-gallery-card-media">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={project.image} alt="" loading="lazy" decoding="async" />
@@ -199,6 +194,34 @@ export function EditorialProjectsFlow() {
                   <span>{project.category}</span>
                   <strong>{project.name}</strong>
                 </div>
+              </>
+            )
+
+            if (!project.url) {
+              return (
+                <div
+                  key={project.num}
+                  className={className}
+                  data-gallery-card
+                  style={{ zIndex: slot.z }}
+                  aria-label={`${project.name} — ${project.category}`}
+                >
+                  {cardBody}
+                </div>
+              )
+            }
+
+            return (
+              <a
+                key={project.num}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={className}
+                data-gallery-card
+                style={{ zIndex: slot.z }}
+              >
+                {cardBody}
               </a>
             )
           })}

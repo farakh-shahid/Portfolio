@@ -130,29 +130,33 @@ export function useEditorialMotion(enabled: boolean) {
 
     const hero = document.querySelector('[data-hero-section]')
     if (hero) {
-      gsap.to('[data-hero-parallax]', {
-        y: -90,
-        scale: 0.93,
-        opacity: 0.35,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.1,
-        },
-      })
+      const mobileHero = window.matchMedia('(max-width: 760px)').matches
 
-      gsap.to(hero, {
-        opacity: 0.55,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5,
-        },
-      })
+      if (!mobileHero) {
+        gsap.to('[data-hero-parallax]', {
+          y: -90,
+          scale: 0.93,
+          opacity: 0.35,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.1,
+          },
+        })
+
+        gsap.to(hero, {
+          opacity: 0.55,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: hero,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+          },
+        })
+      }
     }
 
     gsap.utils.toArray<HTMLElement>('[data-section-entry]').forEach((section) => {

@@ -15,6 +15,7 @@ import { EditorialStack } from '@/components/premium/editorial-stack'
 import { EditorialProjectsFlow } from '@/components/premium/editorial-projects-flow'
 import { useEditorialMotion } from '@/components/premium/use-editorial-motion'
 import { EditorialCursor } from '@/components/premium/editorial-cursor'
+import { EditorialHeroNeural } from '@/components/premium/editorial-hero-neural'
 import { EditorialHeroMesh } from '@/components/premium/editorial-hero-mesh'
 import { EditorialIntro } from '@/components/premium/editorial-intro'
 import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
@@ -59,14 +60,16 @@ export function EditorialPortfolio() {
             <a href="#story">About</a>
             <a href="#exp">Experience</a>
             <HeroResumeBuild />
-            <a href="#contact" className="av">
-              Available
+            <a href="#contact" className="av" aria-label="Available for work">
+              <span className="av-pulse" aria-hidden />
+              <span className="av-label">Available</span>
             </a>
           </div>
         </div>
       </nav>
 
       <header data-hero-section className="editorial-hero">
+        <EditorialHeroNeural />
         <EditorialHeroMesh />
         <div className="editorial-wrap editorial-hero-inner" data-hero-parallax>
           <div data-hero-kicker className="editorial-kicker">

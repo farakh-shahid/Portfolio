@@ -208,16 +208,6 @@ export const editorialWorkGallery = [
   },
   {
     num: '02',
-    name: 'Maple HR',
-    category: 'HR · Internal Tools',
-    description:
-      'Operations hub with clean data layers — admin workflows trimmed and APIs built for long-term maintainability.',
-    stack: 'React · RTK Query · Node',
-    image: '/images/gallery/maple-hr.png',
-    url: 'https://maplehr.io/',
-  },
-  {
-    num: '03',
     name: 'Upmail',
     category: 'Data · Reporting',
     description:
@@ -227,7 +217,7 @@ export const editorialWorkGallery = [
     url: 'https://www.upmailsolutions.com/',
   },
   {
-    num: '04',
+    num: '03',
     name: 'Galaxy EHR',
     category: 'Health · Clinical UX',
     description:
@@ -237,7 +227,37 @@ export const editorialWorkGallery = [
     url: 'https://galaxyehr.com/',
   },
   {
+    num: '04',
+    name: 'BusinessOS',
+    category: 'SaaS · Tailor Operations',
+    description:
+      'Bilingual tailor shop platform — orders, measurements, receivables and customer history in English or Urdu.',
+    stack: 'Next.js · TypeScript · PostgreSQL',
+    image: '/images/gallery/businessos-login.png',
+    url: 'https://getbusinessos.vercel.app/login',
+  },
+  {
     num: '05',
+    name: 'BusinessOS',
+    category: 'Dashboard · Shop Ops',
+    description:
+      'Daily command center — order priorities, workload pipeline, cash flow and pickup reminders at a glance.',
+    stack: 'Next.js · React · Tailwind',
+    image: '/images/gallery/businessos-dashboard.png',
+    url: 'https://getbusinessos.vercel.app/login',
+  },
+  {
+    num: '06',
+    name: 'BusinessOS',
+    category: 'Analytics · Revenue',
+    description:
+      'Income trends, outstanding balances and production pipeline — seasonal insights for tailor shop owners.',
+    stack: 'Next.js · Charts · PostgreSQL',
+    image: '/images/gallery/businessos-analytics.png',
+    url: 'https://getbusinessos.vercel.app/login',
+  },
+  {
+    num: '07',
     name: 'Futurenostics',
     category: 'AI · Multi-client Delivery',
     description:
@@ -247,17 +267,7 @@ export const editorialWorkGallery = [
     url: 'https://www.futurenostics.com/',
   },
   {
-    num: '06',
-    name: 'Greeka',
-    category: 'Travel · Ferry Booking',
-    description:
-      'NestJS microservices migration — booking flows, RabbitMQ messaging and Stripe payments at ferry scale.',
-    stack: 'NestJS · PostgreSQL · RabbitMQ',
-    image: '/images/gallery/greeka.png',
-    url: 'https://www.greeka.com/',
-  },
-  {
-    num: '07',
+    num: '08',
     name: 'Bitnine',
     category: 'Graph · Data Platform',
     description:
@@ -265,16 +275,6 @@ export const editorialWorkGallery = [
     stack: 'Next.js · GraphQL · Node',
     image: '/images/gallery/bitnine.png',
     url: 'https://bitnine.net/',
-  },
-  {
-    num: '08',
-    name: 'Devsinc',
-    category: 'E-commerce · Scale',
-    description:
-      'High-traffic storefront architecture — microservices, Redis caching and multi-tenant infra across a 40+ engineer org.',
-    stack: 'React · Node · Redis · AWS',
-    image: '/images/gallery/devsinc.png',
-    url: 'https://www.devsinc.com/',
   },
   {
     num: '09',
@@ -288,13 +288,93 @@ export const editorialWorkGallery = [
   },
   {
     num: '10',
-    name: 'Cloud Delivery',
-    category: 'AWS · Serverless',
+    name: 'Light VR',
+    category: 'Immersive · Product Landing',
     description:
-      'Lambda, Cognito, SQS/SNS pipelines — secure auth, event-driven workflows and boringly reliable deploys.',
-    stack: 'AWS · Docker · CI/CD',
-    image: '/images/gallery/cloud-platform.png',
-    url: 'https://www.futurenostics.com/',
+      'Three-dimensional product storytelling — cinematic hero, device gallery and scroll-driven narrative for a VR platform.',
+    stack: 'Next.js · GSAP · Framer Motion',
+    image: '/images/gallery/light-vr.png',
+    url: null,
+  },
+  {
+    num: '11',
+    name: 'Crappto',
+    category: 'Fintech · Crypto Platform',
+    description:
+      'Isometric 3D marketing site — profit calculator, market sentiment blocks and high-contrast conversion flows.',
+    stack: 'React · Three.js · Tailwind',
+    image: '/images/gallery/crappto.png',
+    url: null,
+  },
+  {
+    num: '12',
+    name: 'Studio Portfolio',
+    category: 'Creative · Personal Brand',
+    description:
+      'Editorial portfolio experience — asymmetric project grid, testimonial rhythm and contact funnel for a design-led practice.',
+    stack: 'Next.js · TypeScript · Motion',
+    image: '/images/gallery/studio-portfolio.png',
+    url: null,
+  },
+  {
+    num: '13',
+    name: 'Neo VR',
+    category: 'Immersive · Futuristic Landing',
+    description:
+      'Sci-fi VR product page — gradient hero, device highlights and testimonial blocks on a deep purple canvas.',
+    stack: 'Next.js · GSAP · Three.js',
+    image: '/images/gallery/neo-vr.png',
+    url: null,
+  },
+  {
+    num: '14',
+    name: 'Prism XR',
+    category: 'Hardware · Product Launch',
+    description:
+      'VR headset launch narrative — layered hero imagery, feature grid and social proof tuned for hardware brands.',
+    stack: 'React · Framer Motion · Tailwind',
+    image: '/images/gallery/prism-vr.png',
+    url: null,
+  },
+  {
+    num: '15',
+    name: 'Pulse Event',
+    category: 'Events · Immersive Experience',
+    description:
+      'Event-first VR landing — bold typography, schedule blocks and registration funnel for live experiences.',
+    stack: 'Next.js · TypeScript · Motion',
+    image: '/images/gallery/pulse-vr.png',
+    url: null,
+  },
+  {
+    num: '16',
+    name: 'Nexus Crypto',
+    category: 'Web3 · Trading Platform',
+    description:
+      'Crypto exchange concept — market charts, wallet flows and high-contrast fintech UI on a dark base.',
+    stack: 'React · Web3 · Tailwind',
+    image: '/images/gallery/nexus-crypto.png',
+    url: null,
+  },
+  {
+    num: '17',
+    name: 'Orbit Tech',
+    category: 'SaaS · Technology Landing',
+    description:
+      'Modern tech landing — feature columns, pricing rhythm and crisp CTA hierarchy for B2B products.',
+    stack: 'Next.js · TypeScript · GSAP',
+    image: '/images/gallery/orbit-tech.png',
+    url: null,
+  },
+  {
+    num: '18',
+    name: 'Aurora SaaS',
+    category: 'SaaS · Gradient Marketing',
+    description:
+      'Liquid-gradient marketing site — fluid backgrounds, product highlights and conversion-focused layout.',
+    stack: 'React · Tailwind · Motion',
+    image: '/images/gallery/aurora-saas.png',
+    url: null,
   },
 ] as const
 
