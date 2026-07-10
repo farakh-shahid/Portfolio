@@ -17,6 +17,7 @@ import { useEditorialMotion } from '@/components/premium/use-editorial-motion'
 import { EditorialCursor } from '@/components/premium/editorial-cursor'
 import { EditorialHeroNeural } from '@/components/premium/editorial-hero-neural'
 import { EditorialHeroMesh } from '@/components/premium/editorial-hero-mesh'
+import { EditorialStarfield } from '@/components/premium/editorial-starfield'
 import { EditorialIntro } from '@/components/premium/editorial-intro'
 import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
 import { HeroScrollIndicator } from '@/components/premium/hero-scroll-indicator'
@@ -48,6 +49,8 @@ export function EditorialPortfolio() {
       <EditorialCursor />
 
       <div className="editorial-bg" aria-hidden />
+
+      <EditorialStarfield />
 
       <nav id="editorial-nav" className="editorial-nav">
         <div className="editorial-wrap editorial-nav-inner">

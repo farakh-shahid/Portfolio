@@ -3,9 +3,12 @@
 import { useReducedMotion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
-const FADE_WHITE = '255, 255, 255'
-const PARTICLE_COUNT = 68
-const LINK_DISTANCE = 128
+const DOT_WHITE = '255, 255, 255'
+const ACCENT = '124, 115, 255'
+const ACCENT_SOFT = '160, 150, 255'
+const ACCENT_GLOW = '108, 99, 255'
+const PARTICLE_COUNT = 74
+const LINK_DISTANCE = 134
 const MOUSE_RADIUS = 155
 
 type Particle = {
@@ -57,7 +60,7 @@ export function EditorialHeroNeural() {
           y: Math.random() * height,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          size: 1.1 + Math.random() * 1.2,
+          size: 1.2 + Math.random() * 1.25,
           phase: Math.random() * Math.PI * 2,
         }
       })
@@ -138,8 +141,8 @@ export function EditorialHeroNeural() {
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(${FADE_WHITE}, ${0.04 + strength * 0.12})`
-            ctx.lineWidth = 0.75
+            ctx.strokeStyle = `rgba(${ACCENT}, ${0.12 + strength * 0.3})`
+            ctx.lineWidth = 0.85
             ctx.stroke()
           }
         }
@@ -153,7 +156,13 @@ export function EditorialHeroNeural() {
             ctx.beginPath()
             ctx.moveTo(smooth.x, smooth.y)
             ctx.lineTo(p.x, p.y)
-            ctx.strokeStyle = `rgba(${FADE_WHITE}, ${strength * 0.24 * visible})`
+            ctx.strokeStyle = `rgba(${ACCENT_GLOW}, ${strength * 0.2 * visible})`
+            ctx.lineWidth = 1.15
+            ctx.stroke()
+            ctx.beginPath()
+            ctx.moveTo(smooth.x, smooth.y)
+            ctx.lineTo(p.x, p.y)
+            ctx.strokeStyle = `rgba(${DOT_WHITE}, ${strength * 0.24 * visible})`
             ctx.lineWidth = 0.8
             ctx.stroke()
           }
@@ -162,19 +171,31 @@ export function EditorialHeroNeural() {
 
       for (const p of particles) {
         const pulse = 0.9 + Math.sin(time * 1.3 + p.phase) * 0.1
-        let alpha = 0.12 * visible * pulse
+        let alpha = 0.2 * visible * pulse
 
         if (mouse.active && visible > 0.05) {
           const d = Math.hypot(p.x - smooth.x, p.y - smooth.y)
           if (d < MOUSE_RADIUS) {
             const strength = 1 - d / MOUSE_RADIUS
-            alpha = 0.12 + strength * 0.28
+            alpha = 0.2 + strength * 0.28
           }
         }
 
+        const r = p.size * pulse
+
         ctx.beginPath()
-        ctx.arc(p.x, p.y, p.size * pulse, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${FADE_WHITE}, ${alpha})`
+        ctx.arc(p.x, p.y, r * 2.6, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${ACCENT_GLOW}, ${alpha * 0.55})`
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, r * 1.5, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${ACCENT_SOFT}, ${alpha * 0.45})`
+        ctx.fill()
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${DOT_WHITE}, ${Math.min(alpha * 1.1, 0.88)})`
         ctx.fill()
       }
 

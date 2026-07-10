@@ -8,8 +8,9 @@ import { editorialCapabilities } from '@/data/editorial-portfolio'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const SCROLL_VH = 320
+const SCROLL_VH = 400
 const CARD_SEGMENT = 0.3
+const END_HOLD = 0.28
 
 export function EditorialBuild() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -122,6 +123,11 @@ export function EditorialBuild() {
             t,
           )
         })
+
+        if (cards.length > 1) {
+          const lastBeat = 0.18 + (cards.length - 2) * CARD_SEGMENT + 0.4
+          tl.to({}, { duration: END_HOLD }, lastBeat)
+        }
       })
 
       mm.add('(max-width: 767px)', () => {
