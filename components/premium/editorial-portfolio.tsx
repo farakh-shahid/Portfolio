@@ -23,6 +23,7 @@ import { HeroRotatingBody } from '@/components/premium/hero-rotating-body'
 import { HeroScrollIndicator } from '@/components/premium/hero-scroll-indicator'
 import { HeroResumeBuild } from '@/components/premium/hero-resume-build'
 import { EditorialContact } from '@/components/premium/editorial-contact'
+import { EditorialNavSpy } from '@/components/premium/editorial-nav-spy'
 import { EditorialBackToTop } from '@/components/premium/editorial-back-to-top'
 import { HiEye } from 'react-icons/hi2'
 
@@ -47,6 +48,8 @@ export function EditorialPortfolio() {
       <div id="editorial-gold-orb-soft" className="editorial-gold-orb editorial-gold-orb--soft" aria-hidden />
 
       <EditorialCursor />
+
+      <EditorialNavSpy />
 
       <div className="editorial-bg" aria-hidden />
 

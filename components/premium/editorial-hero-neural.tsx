@@ -54,7 +54,7 @@ export function EditorialHeroNeural() {
     const spawn = () => {
       particles = Array.from({ length: PARTICLE_COUNT }, () => {
         const angle = Math.random() * Math.PI * 2
-        const speed = 0.12 + Math.random() * 0.2
+        const speed = 0.07 + Math.random() * 0.12
         return {
           x: Math.random() * width,
           y: Math.random() * height,
@@ -117,7 +117,7 @@ export function EditorialHeroNeural() {
           }
         }
 
-        const maxSpeed = 0.38
+        const maxSpeed = 0.15
         const speed = Math.hypot(p.vx, p.vy)
         if (speed > maxSpeed) {
           p.vx = (p.vx / speed) * maxSpeed

@@ -6,8 +6,17 @@ import { useEffect, useRef } from 'react'
 const DOT_WHITE = '255, 255, 255'
 const ACCENT = '124, 115, 255'
 const ACCENT_SOFT = '160, 150, 255'
-const MOUSE_RADIUS = 150
-const MOUSE_GLOW_RADIUS = 210
+const HOVER_RADIUS = 190
+const LINK_DIST = 118
+const NEAR_LIMIT = 7
+const GRID_SPACING = 46
+const GLOW_RADIUS = 220
+
+type Mode = 'constellation' | 'grid' | 'glow'
+
+// section id -> effect. Anything not listed falls back to DEFAULT_MODE.
+const SECTION_MODES: Record<string, Mode> = {}
+const DEFAULT_MODE: Mode = 'grid'
 
 type Star = {
   y: number
@@ -16,8 +25,6 @@ type Star = {
   size: number
   phase: number
   alpha: number
-  ox: number
-  oy: number
 }
 
 export function EditorialStarfield() {
@@ -50,12 +57,10 @@ export function EditorialStarfield() {
       stars = Array.from({ length: count() }, () => ({
         y: Math.random() * height,
         baseX: Math.random() * width,
-        vy: (Math.random() > 0.5 ? 1 : -1) * (0.04 + Math.random() * 0.09),
+        vy: (Math.random() > 0.5 ? 1 : -1) * (0.03 + Math.random() * 0.05),
         size: 0.65 + Math.random() * 1.05,
         phase: Math.random() * Math.PI * 2,
         alpha: 0.14 + Math.random() * 0.18,
-        ox: 0,
-        oy: 0,
       }))
     }
 
@@ -71,27 +76,35 @@ export function EditorialStarfield() {
       spawn()
     }
 
-    const heroCoversPoint = (x: number, y: number) => {
-      const hero = document.querySelector('[data-hero-section]')
-      if (!hero) return false
-      const rect = hero.getBoundingClientRect()
-      return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
-    }
+    const heroRectNow = () =>
+      document.querySelector('[data-hero-section]')?.getBoundingClientRect()
+    const globeRectNow = () =>
+      document.querySelector('[data-globe-zone]')?.getBoundingClientRect()
 
-    const sx = (s: Star) => s.baseX + s.ox
-    const sy = (s: Star) => s.y + s.oy
+    // decide effect based on which mapped section the cursor is inside
+    const modeAt = (x: number, y: number): Mode => {
+      for (const id in SECTION_MODES) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const r = el.getBoundingClientRect()
+        if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
+          return SECTION_MODES[id]
+        }
+      }
+      return DEFAULT_MODE
+    }
 
     const step = () => {
       time += 0.016
 
       if (finePointer) {
-        smooth.x += (mouse.x - smooth.x) * 0.11
-        smooth.y += (mouse.y - smooth.y) * 0.11
+        smooth.x += (mouse.x - smooth.x) * 0.14
+        smooth.y += (mouse.y - smooth.y) * 0.14
       }
 
       for (const s of stars) {
         s.y += s.vy
-        s.baseX += Math.sin(time * 0.26 + s.phase) * 0.03
+        s.baseX += Math.sin(time * 0.2 + s.phase) * 0.02
 
         if (s.vy > 0 && s.y > height + 8) {
           s.y = -8
@@ -103,77 +116,120 @@ export function EditorialStarfield() {
 
         if (s.baseX < -8) s.baseX = width + 8
         if (s.baseX > width + 8) s.baseX = -8
-
-        s.ox *= 0.9
-        s.oy *= 0.9
-
-        if (finePointer && mouse.active && !heroCoversPoint(smooth.x, smooth.y)) {
-          const dx = sx(s) - smooth.x
-          const dy = sy(s) - smooth.y
-          const d = Math.hypot(dx, dy)
-          if (d < MOUSE_RADIUS && d > 1) {
-            const force = (1 - d / MOUSE_RADIUS) * 0.18
-            s.ox += (dx / d) * force
-            s.oy += (dy / d) * force
-          }
-        }
       }
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height)
 
-      const hero = document.querySelector('[data-hero-section]')
-      const heroRect = hero?.getBoundingClientRect()
+      const heroRect = heroRectNow()
+      const globeRect = globeRectNow()
+      const inRect = (rect: DOMRect | undefined, x: number, y: number) =>
+        !!rect && x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+      const inHero = (x: number, y: number) =>
+        inRect(heroRect, x, y) || inRect(globeRect, x, y)
 
-      if (finePointer && mouse.active && !heroCoversPoint(smooth.x, smooth.y)) {
+      const active = finePointer && mouse.active && !inHero(smooth.x, smooth.y)
+      const mode: Mode = active ? modeAt(smooth.x, smooth.y) : DEFAULT_MODE
+
+      // --- soft glow (glow mode) ---
+      if (active && mode === 'glow') {
         const glow = ctx.createRadialGradient(
           smooth.x,
           smooth.y,
           0,
           smooth.x,
           smooth.y,
-          MOUSE_GLOW_RADIUS,
+          GLOW_RADIUS,
         )
         glow.addColorStop(0, `rgba(${ACCENT}, 0.12)`)
-        glow.addColorStop(0.45, `rgba(${ACCENT_SOFT}, 0.05)`)
+        glow.addColorStop(0.5, `rgba(${ACCENT_SOFT}, 0.05)`)
         glow.addColorStop(1, 'rgba(124, 115, 255, 0)')
         ctx.fillStyle = glow
         ctx.fillRect(0, 0, width, height)
       }
 
-      for (const s of stars) {
-        const x = sx(s)
-        const y = sy(s)
-
-        if (heroRect && x >= heroRect.left && x <= heroRect.right && y >= heroRect.top && y <= heroRect.bottom) {
-          continue
+      // --- faint grid dots near cursor (grid mode) ---
+      if (active && mode === 'grid') {
+        const gx0 = Math.floor((smooth.x - GLOW_RADIUS) / GRID_SPACING) * GRID_SPACING
+        const gy0 = Math.floor((smooth.y - GLOW_RADIUS) / GRID_SPACING) * GRID_SPACING
+        for (let gx = gx0; gx < smooth.x + GLOW_RADIUS; gx += GRID_SPACING) {
+          for (let gy = gy0; gy < smooth.y + GLOW_RADIUS; gy += GRID_SPACING) {
+            if (inHero(gx, gy)) continue
+            const d = Math.hypot(gx - smooth.x, gy - smooth.y)
+            if (d > GLOW_RADIUS) continue
+            const prox = 1 - d / GLOW_RADIUS
+            ctx.beginPath()
+            ctx.arc(gx, gy, 0.8 + prox * 1.1, 0, Math.PI * 2)
+            ctx.fillStyle = `rgba(${ACCENT}, ${0.06 + prox * 0.34})`
+            ctx.fill()
+          }
         }
+      }
+
+      // --- constellation links (constellation mode) ---
+      let near: { s: Star; x: number; y: number; prox: number }[] = []
+      if (active && mode === 'constellation') {
+        for (const s of stars) {
+          const x = s.baseX
+          const y = s.y
+          if (inHero(x, y)) continue
+          const d = Math.hypot(x - smooth.x, y - smooth.y)
+          if (d < HOVER_RADIUS) near.push({ s, x, y, prox: 1 - d / HOVER_RADIUS })
+        }
+        near.sort((a, b) => b.prox - a.prox)
+        near = near.slice(0, NEAR_LIMIT)
+
+        for (let i = 0; i < near.length; i++) {
+          for (let j = i + 1; j < near.length; j++) {
+            const a = near[i]
+            const b = near[j]
+            const ld = Math.hypot(a.x - b.x, a.y - b.y)
+            if (ld < LINK_DIST) {
+              const strength = (1 - ld / LINK_DIST) * Math.min(a.prox, b.prox)
+              ctx.beginPath()
+              ctx.moveTo(a.x, a.y)
+              ctx.lineTo(b.x, b.y)
+              ctx.strokeStyle = `rgba(${ACCENT}, ${strength * 0.4})`
+              ctx.lineWidth = 0.7
+              ctx.stroke()
+            }
+          }
+        }
+      }
+
+      const litProx = new Map(near.map((n) => [n.s, n.prox]))
+
+      for (const s of stars) {
+        const x = s.baseX
+        const y = s.y
+        if (inHero(x, y)) continue
 
         const twinkle = 0.9 + Math.sin(time * 1.02 + s.phase) * 0.1
         let alpha = s.alpha * twinkle
-        let purpleMix = 0
+        let prox = 0
 
-        if (finePointer && mouse.active && !heroCoversPoint(smooth.x, smooth.y)) {
+        if (active) {
           const d = Math.hypot(x - smooth.x, y - smooth.y)
-          if (d < MOUSE_RADIUS) {
-            const strength = 1 - d / MOUSE_RADIUS
-            alpha = Math.min(0.72, alpha + strength * 0.32)
-            purpleMix = strength
+          if (mode === 'constellation') {
+            prox = litProx.get(s) ?? 0
+          } else if (d < GLOW_RADIUS) {
+            prox = (1 - d / GLOW_RADIUS) * (mode === 'glow' ? 1 : 0.85)
           }
+          if (prox > 0) alpha = Math.min(0.8, alpha + prox * 0.4)
         }
 
         const r = s.size * twinkle
 
-        if (purpleMix > 0.05) {
+        if (prox > 0.05) {
           ctx.beginPath()
-          ctx.arc(x, y, r * 2.8, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${ACCENT}, ${purpleMix * 0.24})`
+          ctx.arc(x, y, r * 2.6, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${ACCENT}, ${prox * 0.2})`
           ctx.fill()
 
           ctx.beginPath()
-          ctx.arc(x, y, r * 1.6, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${ACCENT_SOFT}, ${purpleMix * 0.3})`
+          ctx.arc(x, y, r * 1.5, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${ACCENT_SOFT}, ${prox * 0.28})`
           ctx.fill()
         }
 

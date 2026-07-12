@@ -29,6 +29,56 @@ body {
   box-sizing: border-box;
 }
 
+/* Custom scrollbar matching the site color scheme */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--accent) 55%, transparent) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-0);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid var(--bg-0);
+  background: linear-gradient(
+    var(--accent),
+    var(--accent-soft)
+  );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    var(--accent-soft),
+    var(--accent)
+  );
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-0);
+}
+
+/* Editorial page uses a purple accent, so tint its scrollbar to match */
+.editorial {
+  scrollbar-color: rgba(108, 99, 255, 0.55) transparent;
+}
+
+.editorial ::-webkit-scrollbar-track,
+.editorial ::-webkit-scrollbar-corner {
+  background: var(--bg);
+}
+
+.editorial ::-webkit-scrollbar-thumb {
+  border: 2px solid var(--bg);
+  background: linear-gradient(var(--accent), var(--accent-soft));
+}
+
 a {
   color: inherit;
 }

@@ -9,7 +9,8 @@ import { editorialProcess } from '@/data/editorial-portfolio'
 gsap.registerPlugin(ScrollTrigger)
 
 const LINE_ONE = ['Four', 'phases', 'today.']
-const LINE_TWO = ['Clear', 'scope.', 'Every', 'project.']
+const LINE_TWO = ['Clear', 'scope.']
+const LINE_THREE = ['Every', 'project.']
 const LEAD_WORDS = ['Four', 'steps', 'from', 'brief', 'to', 'ship.']
 
 const CARD_THEMES = [
@@ -60,11 +61,13 @@ export function EditorialProcess() {
       mm.add('(min-width: 768px)', () => {
         const line1 = heroPin.querySelector<HTMLElement>('[data-process-line="1"]')
         const line2 = heroPin.querySelector<HTMLElement>('[data-process-line="2"]')
+        const line3 = heroPin.querySelector<HTMLElement>('[data-process-line="3"]')
         const ghost = heroPin.querySelector<HTMLElement>('[data-process-ghost]')
         const eyebrow = heroPin.querySelector<HTMLElement>('[data-process-eyebrow]')
         const words1 = gsap.utils.toArray<HTMLElement>('[data-process-line="1"] [data-process-word]')
         const words2 = gsap.utils.toArray<HTMLElement>('[data-process-line="2"] [data-process-word]')
-        const allWords = [...words1, ...words2]
+        const words3 = gsap.utils.toArray<HTMLElement>('[data-process-line="3"] [data-process-word]')
+        const allWords = [...words1, ...words2, ...words3]
         const cards = gsap.utils.toArray<HTMLElement>('[data-process-step]')
         const scatterGroups = gsap.utils.toArray<HTMLElement>('[data-scatter-group]')
         const leadWords = gsap.utils.toArray<HTMLElement>('[data-process-lead-word]')
@@ -91,14 +94,15 @@ export function EditorialProcess() {
         }
 
         spreadWords(words1, 52, 1)
-        spreadWords(words2, 48, -1)
+        spreadWords(words2, 60, -1)
+        spreadWords(words3, 60, 1)
 
         if (allWords.length) {
           heroTl.to(allWords, { opacity: 1, ease: 'none', duration: 0.35 }, 0)
         }
 
-        if (line1) heroTl.to(line1, { y: -80, ease: 'none' }, 0.32)
-        if (line2) heroTl.to(line2, { y: 80, ease: 'none' }, 0.32)
+        if (line1) heroTl.to(line1, { y: -70, ease: 'none' }, 0.32)
+        if (line3) heroTl.to(line3, { y: 70, ease: 'none' }, 0.32)
 
         if (ghost) {
           heroTl.fromTo(ghost, { scale: 0.88, opacity: 0.04 }, { scale: 1.12, opacity: 0.09, ease: 'none' }, 0)
@@ -291,6 +295,13 @@ export function EditorialProcess() {
             </p>
             <p className="editorial-process-line editorial-process-line--accent" data-process-line="2">
               {LINE_TWO.map((word) => (
+                <span key={word} className="editorial-process-word" data-process-word>
+                  {word}
+                </span>
+              ))}
+            </p>
+            <p className="editorial-process-line editorial-process-line--accent" data-process-line="3">
+              {LINE_THREE.map((word) => (
                 <span key={word} className="editorial-process-word" data-process-word>
                   {word}
                 </span>
